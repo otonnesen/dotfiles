@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Runs via vim. Compiles document according to filetype.
+# Currently only supports .tex files.
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+
+cd $dir || exit
+
+case "$file" in
+	*\.tex) pdflatex "$base" && bibtex "$base" && pdflatex "$base" && pdflatex "$base" ;;
+	*.Xresources) xrdb "$file" ;;
+	*) echo "Filetype not recognized." ;;
+esac

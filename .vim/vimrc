@@ -1,0 +1,58 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+
+let mapleader=" "
+
+" Preliminaries
+	set nocompatible
+	syntax on
+	set encoding=utf-8
+	set number
+	set relativenumber
+	filetype plugin indent on
+" Themes
+	let g:airline_theme='base16_gruvbox_dark_hard'
+" Indents
+	set autoindent
+	set smartindent
+	set tabstop=4
+	set shiftwidth=4
+" Command-mode autocompletion
+	set wildmode=longest,list,full
+" Give backspace default functionality
+	set backspace=
+" Goyo for prose
+	map <leader>f :Goyo \| set linebreak<CR>
+" Spellcheck
+	map <leader>o :setlocal spell! spelllang=en_ca<CR>
+" Replace all with S
+	nnoremap S :%s//g<Left><Left>
+" Make Y behave like D
+	map Y y$
+" Compile document
+	map <leader>c :w! \| !compiler <c-r>%<CR>
+" Clean tex build files
+	autocmd VimLeave *.tex !texclear %
+" Clean tex build files
+	autocmd VimLeave ~/.Xresources !xrdb %
+" Shorter movement commands
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
+" Move viminfo file
+	set viminfo+=n$HOME/.cache/viminfo
+
+let &shell='/bin/bash --login'

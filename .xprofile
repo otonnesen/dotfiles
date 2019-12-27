@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Runs on X initialization
+
+setbg				# wallpaper
+xcompmgr &			# transparency
+sxhkd &				# keybinds
