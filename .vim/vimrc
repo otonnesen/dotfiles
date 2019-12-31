@@ -54,5 +54,3 @@ let mapleader=" "
 	map <C-l> <C-w>l
 " Move viminfo file
 	set viminfo+=n$HOME/.cache/viminfo
-
-let &shell='/bin/bash --login'
