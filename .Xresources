@@ -1,8 +1,8 @@
-st.alpha: 0.2
-st.alphaUnfocused: 0.6
+st.alpha: 0.97
+st.alphaUnfocused: 0.8
 st.font: Inconsolata-16;
-!st.termname: st-256color
-!st.borderpx: 2
+dmenu.font: Inconsolata-16
+dmenu.lineheight: 40
 
 
 *.background: #282828
