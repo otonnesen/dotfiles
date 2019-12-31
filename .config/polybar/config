@@ -44,6 +44,7 @@ height = 40
 ;offset-y = 1%
 radius = 0
 fixed-center = false
+bottom = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
