@@ -1,5 +1,6 @@
 h		~/
 d		~/Documents
 D		~/Downloads
+dot		~/dotfiles
 cf		~/.config
 sc		~/.local/bin

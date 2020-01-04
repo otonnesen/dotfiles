@@ -1,5 +1,6 @@
 bf		~/.config/files
 bd		~/.config/directories
+bw		~/.config/bookmarks
 cfa		~/.config/aliasrc
 cfz		$ZDOTDIR/.zshrc
 cfv		~/.vim/vimrc
