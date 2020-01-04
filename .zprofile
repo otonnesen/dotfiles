@@ -14,9 +14,12 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/texlive/2019/bin/x86_64-linux:$PATH"
 
 # Default programs
+export VISUAL="vim"
 export EDITOR="vim"
+export PAGER="less"
 export TERMINAL="st"
 export READER="zathura"
+export BROWSER="qutebrowser"
 
 # Move configs/caches/etc
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -24,6 +27,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$HOME/.config/zsh"
 export TERMINFO="$HOME/.local/share/terminfo"
 export XAUTHORITY="$HOME/.cache/Xauthority"
-export GNUPGHOME="$HOME/.local/share/gnupg"
+export GNUPGHOME="$HOME/.config/gnupg"
 export LESSHISTFILE="-"
 export LESS=-R
+export CALCURSE_DEFAULT_DIR="$HOME/Documents/calendar.school"
