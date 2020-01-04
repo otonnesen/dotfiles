@@ -1,0 +1,7 @@
+bf		~/.config/files
+bd		~/.config/directories
+cfa		~/.config/aliasrc
+cfz		$ZDOTDIR/.zshrc
+cfv		~/.vim/vimrc
+cfk		~/.config/sxhkd/sxhkdrc
+cfp		~/.profile

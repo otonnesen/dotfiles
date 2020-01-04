@@ -18,7 +18,8 @@ autoload -Uz promptinit
 promptinit
 prompt walters
 
-# Load aliases
+# Load aliases and shortcuts
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # History settings

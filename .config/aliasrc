@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Color stuff
+alias \
+	ls='ls -h --color=auto --group-directories-first' \
+	dir='dir --color=auto' \
+	vdir='vdir --color=auto' \
+	grep='grep --color=auto' \
+	egrep='egrep --color=auto' \
+	fgrep='fgrep --color=auto' \
+
+# More ls aliases
+alias \
+	ll='ls -l' \
+	la='ls -a'
+
+# GitHub command
+alias git='hub'
+
+# Battery
+alias bat='cat /sys/class/power_supply/BAT0/capacity'
+
+# Set default directory for calcurse
+alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
