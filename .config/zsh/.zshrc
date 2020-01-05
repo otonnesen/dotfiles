@@ -14,9 +14,10 @@ source $ZSH/oh-my-zsh.sh
 autoload -U colors && colors
 
 # Prompt
-autoload -Uz promptinit
-promptinit
-prompt walters
+# autoload -Uz promptinit
+# promptinit
+# prompt walters
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Load aliases and shortcuts
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
