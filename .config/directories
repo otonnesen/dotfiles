@@ -1,6 +1,8 @@
 h		~/
 d		~/Documents
+s		~/Documents/school
 D		~/Downloads
+b		"$OLDPWD"
 dot		~/dotfiles
 cf		~/.config
 sc		~/.local/bin

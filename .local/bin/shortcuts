@@ -5,7 +5,7 @@ shell_shortcuts="$HOME/.config/shortcutrc"
 printf "# vim: filetype=sh\\nalias " > $"$shell_shortcuts"
 
 # Load `directories` file
-sed "s/\s*#.*$//;/^\s*$/d" "$HOME/.config/directories" | tee >(awk '{print $1"=\"cd "$2" && ls -a\" \\"}' >> "$shell_shortcuts")
+sed "s/\s*#.*$//;/^\s*$/d" "$HOME/.config/directories" | tee >(awk '{print $1"='\''cd "$2" && ls -a'\'' \\"}' >> "$shell_shortcuts")
 
 # Load `files ` file
 sed "s/\s*#.*$//;/^\s*$/d"  "$HOME/.config/files" | tee >(awk '{print $1"=\"$EDITOR "$2"\" \\"}' >> "$shell_shortcuts")
