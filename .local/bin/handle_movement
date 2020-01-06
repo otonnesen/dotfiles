@@ -1,0 +1,18 @@
+#!/bin/bash
+# For use by sxhkd to differentiate between floating and
+# tiled windows when issuing movement commands.
+
+flag=$1
+dir=$2
+node=$3
+floating="t"
+[ -z $(bspc query -N -n focused.floating) ] && floating="f"
+
+if [[ $floating == "t" && $flag == "s" ]]; then
+	case $dir in
+		"west") bspc node $node -v -45 0;;
+		"south") bspc node $node -v 0 30;;
+		"north") bspc node $node -v 0 -30;;
+		"east") bspc node $node -v 45 0;;
+	esac; else bspc node $node -$flag $dir;
+fi
