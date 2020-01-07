@@ -14,3 +14,5 @@ bspc config gapless_monocle      true
 
 bspc rule -a scratchpad sticky=on state=floating hidden=on
 st -c scratchpad -e launch_scratchpad &
+
+bspc rule -a Zathura state=tiled

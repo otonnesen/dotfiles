@@ -22,3 +22,6 @@ alias bat='cat /sys/class/power_supply/BAT0/capacity'
 
 # Set default directory for calcurse
 alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
+
+# Automatically background and disown zathura
+z() { zathura "$@" &disown }
