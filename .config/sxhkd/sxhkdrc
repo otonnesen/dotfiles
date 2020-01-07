@@ -28,6 +28,9 @@ super + @space
 	then bspc node -f newest.local.floating;\
 	else bspc node -f newest.local.\!floating;\
 	fi
+# Swap with biggest node
+super + g
+	bspc node -s biggest.local
 # Toggle fullscreen
 super + f
 	bspc node -t \~fullscreen
