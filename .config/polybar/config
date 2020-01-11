@@ -68,7 +68,7 @@ font-3 = siji:pixelsize=10;1
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = filesystem memory cpu wlan battery temperature date
+modules-right = filesystem memory cpu wlan2 battery temperature date
 
 tray-position = right
 tray-padding = 0
@@ -179,9 +179,27 @@ format-prefix-foreground = ${colors.gray}
 format-underline = ${colors.darkcyan}
 label = %percentage_used%%
 
-[module/wlan]
+# Onboard WiFi card
+[module/wlan1]
 type = internal/network
 interface = wlp3s0
+interval = 3.0
+
+format-connected-prefix = "直 "
+format-connected = <label-connected>
+format-connected-underline = ${colors.darkmagenta}
+label-connected = %essid:0:25:...%
+
+format-disconnected-prefix = "睊 "
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.gray}
+
+# USB WiFi card
+[module/wlan2]
+type = internal/network
+interface = wlx1cbfce8103f0
 interval = 3.0
 
 format-connected-prefix = "直 "
