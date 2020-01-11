@@ -13,6 +13,9 @@ super + w
 	$BROWSER
 super + shift + w
 	$TERMINAL -e nmtui
+super + y
+	env XSECURELOCK_FONT=Inconsolata\ 18 XSECURELOCK_PASSWORD_PROMPT=hidden xsecurelock
+
 
 # bspwm binds
 super + shift + Escape

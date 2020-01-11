@@ -3,5 +3,5 @@
 # Runs on X initialization
 
 setbg				# wallpaper
-xcompmgr &			# transparency
+compton &			# transparency
 sxhkd &				# keybinds
