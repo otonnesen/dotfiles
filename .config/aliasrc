@@ -25,3 +25,6 @@ alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
 
 # Automatically background and disown zathura
 z() { zathura "$@" &disown }
+
+# Ensure course_shortcuts is not run as a child
+alias cs=". course_shortcuts"
