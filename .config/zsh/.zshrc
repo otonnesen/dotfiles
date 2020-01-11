@@ -27,6 +27,10 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 setopt histignorealldups
 setopt append_history
 setopt extended_history
+# Ensure history movement commands do not visit imported lines
+TRAPWINCH() { # Oh My Zsh breaks everything.
+	zle && { zle set-local-history; zle -R }
+}
 
 # "Infinite" history
 HISTFILE=~/.cache/zsh_history
