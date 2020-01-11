@@ -12,7 +12,7 @@ alias \
 # More ls aliases
 alias \
 	ll='ls -l' \
-	la='ls -a'
+	la='ls -A'
 
 # GitHub command
 alias git='hub'
