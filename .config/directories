@@ -1,6 +1,7 @@
 h		~/
 d		~/Documents
 s		~/Documents/school
+t		~/Documents/school/textbooks
 D		~/Downloads
 b		"$OLDPWD"
 dot		~/dotfiles
