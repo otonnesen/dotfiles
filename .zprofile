@@ -2,10 +2,10 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
+	# include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
 	. "$HOME/.bashrc"
-    fi
+	fi
 fi
 
 PATH="$HOME/.local/bin:$PATH"
@@ -29,5 +29,7 @@ export TERMINFO="$HOME/.local/share/terminfo"
 export XAUTHORITY="$HOME/.cache/Xauthority"
 export GNUPGHOME="$HOME/.config/gnupg"
 export LESSHISTFILE="-"
-export LESS=-R
 export CALCURSE_DEFAULT_DIR="$HOME/Documents/calendar.school"
+
+# Program defaults
+export LESS=-R
