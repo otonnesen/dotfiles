@@ -11,6 +11,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
+Plug 'jrozner/vim-antlr'
 call plug#end()
 
 let mapleader=" "
@@ -37,6 +39,8 @@ let mapleader=" "
 	map <leader>f :Goyo \| set linebreak<CR>
 " Spellcheck
 	map <leader>o :setlocal spell! spelllang=en_ca<CR>
+" Tagbar
+	map <leader>t :Tagbar<CR>
 " Replace all with S
 	nnoremap S :%s//g<Left><Left>
 " Make Y behave like D
@@ -54,3 +58,5 @@ let mapleader=" "
 	map <C-l> <C-w>l
 " Move viminfo file
 	set viminfo+=n$HOME/.cache/viminfo
+" Manually set filetype for *.g files
+au BufRead,BufNewFile *.g set filetype=antlr3
