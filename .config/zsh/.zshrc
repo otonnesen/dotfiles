@@ -1,22 +1,19 @@
-# <---------------------------------------------->
-# Oh My Zsh
-export ZSH="/home/oliver/.local/src/oh-my-zsh"
+# Vi mode stuff
+source /home/oliver/.config/zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+MODE_CURSOR_VICMD="green block"
+MODE_CURSOR_VIINS="#20d08a blinking bar"
+MODE_CURSOR_SEARCH="#ff00ff steady underline"
 
-plugins=(
-	vi-mode
-	zsh-syntax-highlighting
-)
-
-source $ZSH/oh-my-zsh.sh
-# <---------------------------------------------->
+MODE_INDICATOR_VIINS='%F{15}<%F{8}INSERT<%f'
+MODE_INDICATOR_VICMD='%F{10}<%F{2}NORMAL<%f'
+MODE_INDICATOR_REPLACE='%F{9}<%F{1}REPLACE<%f'
+MODE_INDICATOR_SEARCH='%F{13}<%F{5}SEARCH<%f'
+MODE_INDICATOR_VISUAL='%F{12}<%F{4}VISUAL<%f'
+MODE_INDICATOR_VLINE='%F{12}<%F{4}V-LINE<%f'
 
 # Colors
 autoload -U colors && colors
 
-# Prompt
-# autoload -Uz promptinit
-# promptinit
-# prompt walters
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Load aliases and shortcuts
@@ -28,9 +25,8 @@ setopt histignorealldups
 setopt append_history
 setopt extended_history
 # Ensure history movement commands do not visit imported lines
-TRAPWINCH() { # Oh My Zsh breaks everything.
-	zle && { zle set-local-history; zle -R }
-}
+zle -N set-local-history	
+# zle set-local-history
 
 # "Infinite" history
 HISTFILE=~/.cache/zsh_history
@@ -75,3 +71,5 @@ zstyle ":completion:*" special-dirs false
 # Colour pids/list all when killing
 zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#)*=0=01;31"
 zstyle ":completion:*:kill:*" command "ps -u $USER -o pid,%cpu,tty,cputime,cmd"
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
