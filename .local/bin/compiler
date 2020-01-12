@@ -10,7 +10,7 @@ base="${file%.*}"
 cd $dir || exit
 
 case "$file" in
-	*\.tex) pdflatex "$base" && bibtex "$base" && pdflatex "$base" && pdflatex "$base" ;;
+	*\.tex) pdflatex "$base" ;;
 	*.Xresources) xrdb "$file" ;;
 	*) echo "Filetype not recognized." ;;
 esac
