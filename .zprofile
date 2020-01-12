@@ -11,7 +11,7 @@ fi
 PATH="$HOME/.local/bin:$PATH"
 
 # Add texlive path
-PATH="$HOME/.local/texlive/2019/bin/x86_64-linux:$PATH"
+PATH="$HOME/.local/src/texlive/2019/bin/x86_64-linux:$PATH"
 
 # Default programs
 export VISUAL="vim"
