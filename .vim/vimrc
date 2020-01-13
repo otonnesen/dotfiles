@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'jrozner/vim-antlr'
+Plug 'lervag/vimtex'
 call plug#end()
 
 let mapleader=" "
@@ -46,7 +47,7 @@ let mapleader=" "
 " Make Y behave like D
 	map Y y$
 " Compile document
-	map <leader>c :w! \| !compiler <c-r>%<CR>
+	map <leader>c :w! \| !compiler <c-r>%<CR><CR>
 " Clean tex build files
 	autocmd VimLeave *.tex !texclear %
 " Clean tex build files
