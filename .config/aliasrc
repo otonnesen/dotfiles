@@ -28,3 +28,6 @@ z() { zathura "$@" &disown }
 
 # Ensure course_shortcuts is not run as a child
 alias cs=". course_shortcuts"
+
+# Quickly go to $OLDPWD
+alias b="cd -"
