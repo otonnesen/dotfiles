@@ -24,7 +24,7 @@ alias bat='cat /sys/class/power_supply/BAT0/capacity'
 alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
 
 # Automatically background and disown zathura
-z() { zathura "$@" &disown }
+alias z="zathura --fork"
 
 # Ensure course_shortcuts is not run as a child
 alias cs=". course_shortcuts"
