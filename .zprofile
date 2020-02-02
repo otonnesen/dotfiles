@@ -8,11 +8,6 @@ if [ -n "$BASH_VERSION" ]; then
 	fi
 fi
 
-PATH="$HOME/.local/bin:$PATH"
-
-# Add texlive path
-PATH="$HOME/.local/src/texlive/2019/bin/x86_64-linux:$PATH"
-
 # Default programs
 export VISUAL="vim"
 export EDITOR="vim"
@@ -30,6 +25,19 @@ export XAUTHORITY="$HOME/.cache/Xauthority"
 export GNUPGHOME="$HOME/.config/gnupg"
 export LESSHISTFILE="-"
 export CALCURSE_DEFAULT_DIR="$HOME/Documents/calendar.school"
+export GOPATH="$HOME/.local/src/go"
+
+# Add personal bin
+PATH="$HOME/.local/bin:$PATH"
+
+# Add texlive path
+PATH="$HOME/.local/src/texlive/2019/bin/x86_64-linux:$PATH"
+
+# Add Go bin
+PATH="/usr/local/go/bin:$PATH"
+
+# Add GOPATH bin
+PATH="$GOPATH/bin:$PATH"
 
 # Program defaults
 export LESS=-R

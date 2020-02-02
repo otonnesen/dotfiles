@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'jrozner/vim-antlr'
 Plug 'lervag/vimtex'
+Plug 'fatih/vim-go'
 call plug#end()
 
 let mapleader=" "
@@ -27,6 +28,8 @@ let mapleader=" "
 	filetype plugin indent on
 " Themes
 	let g:airline_theme='base16_gruvbox_dark_hard'
+" vim-go
+	let g:go_fmt_command = "goimports"
 " Indents
 	set autoindent
 	set smartindent
