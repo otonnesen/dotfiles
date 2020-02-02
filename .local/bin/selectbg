@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cp $HOME/Pictures/wallpapers/$(ls $HOME/Pictures/wallpapers | dmenu) $HOME/.config/wall.png
+
+setbg
+
+bspc_refocus

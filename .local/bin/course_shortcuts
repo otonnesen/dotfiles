@@ -3,3 +3,5 @@
 # Note: Must be aliased to ". course_shortcuts" so it isn't run in a child shell
 
 cd ~/Documents/school/current/$(echo "$(ls ~/Documents/school/current)" | dmenu) && ls -a
+
+bspc_refocus
