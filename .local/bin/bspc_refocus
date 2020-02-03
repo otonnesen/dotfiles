@@ -2,8 +2,10 @@
 
 # This is a massive hack, but for some reason bspc's focused node doesn't
 # coincide with reality until the node is unselected then reselected.
-bspc node -f "west" && bspc node -f "east"
-bspc node -f "east" && bspc node -f "west" 
-bspc node -f "north" && bspc node -f "south"
-bspc node -f "south" && bspc node -f "north"
+if [ -z "$(bspc query -N -n focused.floating)" ]; then
+	bspc node -f "west" && bspc node -f "east"
+	bspc node -f "east" && bspc node -f "west" 
+	bspc node -f "north" && bspc node -f "south"
+	bspc node -f "south" && bspc node -f "north"
+fi
 
