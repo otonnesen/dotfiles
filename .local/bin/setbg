@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-scale --no-fehbg '/home/oliver/.config/wall.png'
+xwallpaper --zoom /home/oliver/.config/wall.png
