@@ -53,7 +53,7 @@ let mapleader=" "
 	map <leader>c :w! \| !compiler <c-r>%<CR><CR>
 " Clean tex build files
 	autocmd VimLeave *.tex !texclear %
-" Clean tex build files
+" Apply Xresources changes
 	autocmd VimLeave ~/.Xresources !xrdb %
 " Recursively look for tags file in `./[../]*.git/tags` or `./[../]*tags`.
 " Generate tags files from in .git directory with `ctags -R ..` or from  in
