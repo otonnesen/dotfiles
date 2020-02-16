@@ -15,6 +15,7 @@ Plug 'majutsushi/tagbar'
 Plug 'jrozner/vim-antlr'
 Plug 'lervag/vimtex'
 Plug 'fatih/vim-go'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 let mapleader=" "
