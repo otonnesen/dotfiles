@@ -36,6 +36,10 @@ SAVEHIST=999999999
 # Use modern completion system
 autoload -Uz compinit
 zmodload zsh/complist
+
+# Add Rust completions
+fpath+="$ZDOTDIR/functions"
+
 compinit
 
 # Show hidden files
