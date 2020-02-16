@@ -26,6 +26,8 @@ export GNUPGHOME="$HOME/.config/gnupg"
 export LESSHISTFILE="-"
 export CALCURSE_DEFAULT_DIR="$HOME/Documents/calendar.school"
 export GOPATH="$HOME/.local/src/go"
+export RUSTUP_HOME="$HOME/.local/src/rustup"
+export CARGO_HOME="$HOME/.local/src/cargo"
 
 # Add personal bin
 PATH="$HOME/.local/bin:$PATH"
@@ -39,5 +41,10 @@ PATH="/usr/local/go/bin:$PATH"
 # Add GOPATH bin
 PATH="$GOPATH/bin:$PATH"
 
+# Add Cargo bin
+PATH="$CARGO_HOME/bin:$PATH"
+
 # Program defaults
 export LESS=-R
+
+export PATH="$HOME/.cargo/bin:$PATH"
