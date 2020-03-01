@@ -8,6 +8,7 @@ alias \
 	grep='grep --color=auto' \
 	egrep='egrep --color=auto' \
 	fgrep='fgrep --color=auto' \
+	rgrep='rgrep --color=auto' \
 
 # More ls aliases
 alias \
