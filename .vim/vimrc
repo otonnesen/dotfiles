@@ -71,13 +71,19 @@ let mapleader=" "
 " Move viminfo file
 	set viminfo+=n$HOME/.cache/viminfo
 " Manually set filetype for *.g files
-au BufRead,BufNewFile *.g set filetype=antlr3
+	au BufRead,BufNewFile *.g set filetype=antlr3
 " Thin cursor when in insert mode
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
-" Fix graphical lag when entering normal mode
-set ttimeout
-set ttimeoutlen=1
-set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
-set ttyfast
+	let &t_SI = "\<Esc>[6 q"
+	let &t_SR = "\<Esc>[4 q"
+	let &t_EI = "\<Esc>[2 q"
+" Fix vim cursor in tmux
+	if exists('$TMUX')
+		let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
+		let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
+		let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
+	endif
+" Fix graphical lag when entering normal mode (note: does not work in tmux)
+	set ttimeout
+	set ttimeoutlen=1
+	set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+	set ttyfast
