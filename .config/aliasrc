@@ -32,3 +32,7 @@ alias cs=". course_shortcuts"
 
 # Quickly go to $OLDPWD
 alias b="cd -"
+
+# Tmux stuff
+alias tl="tmux list-sessions"
+alias ta="tmux a -t"
