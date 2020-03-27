@@ -60,6 +60,15 @@ let mapleader=" "
 " Generate tags files from in .git directory with `ctags -R ..` or from  in
 " the base project directory with `ctags -R .`.
 	set tags=TAGS;/,.git/TAGS;/,tags;/,.git/tags;/
+" Open tag in new vsplit buffer
+	function Check_tag()
+		if !empty(taglist(expand('<cword>')))
+			exec "norm!\<C-w>v\<C-w>l\<C-]>"
+		else
+			echo "Tag not found"
+		endif
+	endfunction
+map <leader>] :call Check_tag()<CR>
 " Shorter movement commands
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
