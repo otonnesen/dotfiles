@@ -62,7 +62,9 @@ let mapleader=" "
 	set tags=TAGS;/,.git/TAGS;/,tags;/,.git/tags;/
 " Open tag in new vsplit buffer
 	function Check_tag()
-		if !empty(taglist(expand('<cword>')))
+		" The second condition ensures that "class" doesn't think it matches with
+		" "className", for example.
+		if !empty(taglist(expand("<cword>"))) && taglist(expand("<cword>"))[0].name ==# expand("<cword>")
 			exec "norm!\<C-w>v\<C-w>l\<C-]>"
 		else
 			echo "Tag not found"
