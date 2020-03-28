@@ -94,6 +94,7 @@ map <leader>] :call Check_tag()<CR>
 		let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
 	endif
 " Fix graphical lag when entering normal mode (note: does not work in tmux)
+" (note note: I think it does now?)
 	set ttimeout
 	set ttimeoutlen=1
 	set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
