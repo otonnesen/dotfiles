@@ -5,12 +5,12 @@
 
 file=$(readlink -f "$1")
 dir=$(dirname "$file")
-base="${file%.*}"
+base=$(basename "${file%.*}")
 
 cd $dir || exit
 
 case "$file" in
-	*\.tex) pdflatex "$base" ;;
-	*.Xresources) xrdb "$file" ;;
+	*\.tex) pdflatex $base; bibtex $base; pdflatex $base; pdflatex $base;;
+	*.Xresources) xrdb $file;;
 	*) echo "Filetype not recognized." ;;
 esac
