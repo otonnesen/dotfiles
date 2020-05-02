@@ -2,10 +2,10 @@
 
 # Note: Must be aliased to ". course_shortcuts" so it isn't run in a child shell
 
-course=$(echo "$(ls ~/Documents/school/current)" | dmenu)
+course=$(echo "$(ls ~/school/current)" | dmenu)
 
 if [ ! -z $course ]; then
-	cd ~/Documents/school/current/$course && ls -a
+	cd ~/school/current/$course && ls -a
 fi
 
 bspc_refocus
