@@ -61,11 +61,11 @@ super + {o,i}
 # Expand window
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-# Expand gaps
-super + plus
-	let a=$(bspc config window_gap)+12; bspc config window_gap $a
 # Retract gaps
 super + minus
+	let a=$(bspc config window_gap)+12; bspc config window_gap $a
+# Expand gaps
+super + plus
 	let a=$(bspc config window_gap)-12; if (( a < 0 )); then a=0; fi; bspc config window_gap $a
 # Reset gaps
 super + equal
