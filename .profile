@@ -19,15 +19,17 @@ export BROWSER="qutebrowser"
 # Move configs/caches/etc
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
-export ZDOTDIR="$HOME/.config/zsh"
+
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export TERMINFO="$HOME/.local/share/terminfo"
-export XAUTHORITY="$HOME/.cache/Xauthority"
-export GNUPGHOME="$HOME/.config/gnupg"
+export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export LESSHISTFILE="-"
 export CALCURSE_DEFAULT_DIR="$HOME/Documents/calendar.school"
 export GOPATH="$HOME/.local/src/go"
 export RUSTUP_HOME="$HOME/.local/src/rustup"
 export CARGO_HOME="$HOME/.local/src/cargo"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 
 # Add personal bin
 PATH="$HOME/.local/bin:$PATH"
