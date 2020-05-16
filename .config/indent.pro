@@ -1,0 +1,2 @@
+-linux
+-nlp -ci16 // Disables line contiuation at parentheses and sets continuation indent to 2 tabs

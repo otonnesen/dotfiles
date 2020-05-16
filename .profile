@@ -30,6 +30,7 @@ export GOPATH="$HOME/.local/src/go"
 export RUSTUP_HOME="$HOME/.local/src/rustup"
 export CARGO_HOME="$HOME/.local/src/cargo"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export INDENT_PROFILE="$XDG_CONFIG_HOME/indent.pro"
 
 # Add personal bin
 PATH="$HOME/.local/bin:$PATH"
