@@ -14,5 +14,6 @@ bspc config gapless_monocle      true
 
 bspc rule -a Zathura state=tiled
 
-bspc rule -a scratchpad sticky=on state=floating hidden=on
-st -c scratchpad -e ~/.local/bin/launch_scratchpad &
+bspc rule -a scratchpad sticky=on state=floating
+cat /dev/null > /tmp/scratchid # Clear old scratchid if not already done
+/home/oliver/.local/bin/launch_scratchpad
