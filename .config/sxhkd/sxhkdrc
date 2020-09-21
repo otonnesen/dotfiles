@@ -28,8 +28,8 @@ super + shift + @space
 # Toggle floating focused
 super + @space
 	if [ -z $(bspc query -N -n focused.floating) ];\
-	then bspc node -f newest.local.floating;\
-	else bspc node -f newest.local.\!floating;\
+		then bspc node -f newest.local.floating;\
+		else bspc node -f newest.local.\!floating;\
 	fi
 # Swap with biggest node
 super + g
@@ -43,7 +43,10 @@ super + m
 # Toggle scratchpad
 super + u
 	id=$(cat /tmp/scratchid);\
-	[ ! -z $id ] && (bspc node $id --flag hidden; bspc node -f $id)
+	if [ -z $id ];\
+		then launch_scratchpad;\
+		else (bspc node $id --flag hidden; bspc node -f $id);\
+	fi
 # If floating, move window, if tiled focus node in given direction
 super + {_,shift + }{h,j,k,l}
 	handle_movement {f,s} {west,south,north,east} $(bspc query -N -n)
