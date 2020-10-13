@@ -10,7 +10,7 @@ base=$(basename "${file%.*}")
 cd $dir || exit
 
 case "$file" in
-	*\.tex) pdflatex $base; bibtex $base; pdflatex $base; pdflatex $base;;
+	*\.tex) pdflatex $base; count=`ls -1 *.bib 2>/dev/null | wc -l`; if [ $count != 0 ]; then biber $base; pdflatex $base; fi;;
 	*.Xresources) xrdb $file;;
 	*) echo "Filetype not recognized." ;;
 esac
