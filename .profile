@@ -19,9 +19,12 @@ export BROWSER="qutebrowser"
 # Move configs/caches/etc
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_BIN_HOME="$HOME/.local/bin"
+export XDG_LIB_HOME="$HOME/.local/lib"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export TERMINFO="$HOME/.local/share/terminfo"
+export TERMINFO="$XDG_DATA_HOME/terminfo"
 export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export LESSHISTFILE="-"
@@ -31,9 +34,11 @@ export RUSTUP_HOME="$HOME/.local/src/rustup"
 export CARGO_HOME="$HOME/.local/src/cargo"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export INDENT_PROFILE="$XDG_CONFIG_HOME/indent.pro"
+export PSQL_HISTORY="$XDG_CACHE_HOME/psql_history"
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 
 # Add personal bin
-PATH="$HOME/.local/bin:$PATH"
+PATH="$XDG_BIN_HOME:$PATH"
 
 # Add texlive path
 PATH="$HOME/.local/src/texlive/2019/bin/x86_64-linux:$PATH"
