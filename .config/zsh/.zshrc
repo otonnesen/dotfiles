@@ -14,7 +14,7 @@ MODE_CURSOR_SEARCH="#ff00ff steady underline"
 # Colors
 autoload -U colors && colors
 
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Load aliases and shortcuts
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
