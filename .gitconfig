@@ -1,0 +1,8 @@
+[user]
+	email = oliver@tonnesen.com
+	name = Oliver Tonnesen
+[pager]
+	status = true
+[core]
+	pager = less -FRSX
+	excludesfile = ~/.config/gitignore
