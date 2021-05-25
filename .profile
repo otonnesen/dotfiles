@@ -9,8 +9,8 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # Default programs
-export VISUAL="vim"
-export EDITOR="vim"
+export VISUAL="nvim"
+export EDITOR="nvim"
 export PAGER="less"
 export TERMINAL="st"
 export READER="zathura"

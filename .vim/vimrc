@@ -5,17 +5,26 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'axvr/org.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fatih/vim-go'
+Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
+Plug 'lervag/vimtex'
+Plug 'majutsushi/tagbar'
+Plug 'morhetz/gruvbox'
+Plug 'psf/black'
+Plug 'rust-lang/rust.vim'
+Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar'
-Plug 'jrozner/vim-antlr'
-Plug 'lervag/vimtex'
-Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let mapleader=" "
@@ -26,9 +35,16 @@ let mapleader=" "
 	set encoding=utf-8
 	set number
 	set relativenumber
+	" set cursorline
+	set showmatch
+	set tildeop
+	set nohlsearch
 	filetype plugin indent on
+" Give backspace default functionality
+	set backspace=
 " Themes
 	let g:airline_theme='base16_gruvbox_dark_hard'
+	let g:airline_base16_gruvbox_dark_hard_old = 1
 " vim-go
 	let g:go_fmt_command = "goimports"
 " Indents
@@ -36,8 +52,9 @@ let mapleader=" "
 	set smartindent
 " Command-mode autocompletion
 	set wildmode=longest,list,full
-" Give backspace default functionality
-	set backspace=
+" Guideline
+	highlight ColorColumn ctermbg=16
+	nnoremap <leader>y :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 " Goyo for prose
 	map <leader>f :Goyo \| set linebreak<CR>
 " Spellcheck
@@ -79,8 +96,16 @@ map <leader>] :call Check_tag()<CR>
 	map <C-p> :tabp<CR>
 " Move viminfo file
 	set viminfo+=n$HOME/.cache/viminfo
+" Remap CtrlP bind
+	let g:ctrlp_map = '<c-\>'
 " Manually set filetype for *.g files
 	au BufRead,BufNewFile *.g set filetype=antlr3
+" vimwiki config
+	let personal = {}
+	let personal.path = "~/notes/wikis/personal"
+	" I don't know if Go requires special set up or not, and haven't tested it
+	let personal.nested_syntaxes = {'go': 'go', 'python': 'python'}
+	let g:vimwiki_list = [personal]
 " Thin cursor when in insert mode
 	let &t_SI = "\<Esc>[6 q"
 	let &t_SR = "\<Esc>[4 q"
