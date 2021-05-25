@@ -8,11 +8,6 @@ if has("nvim-0.5.0")
 	set signcolumn=number
 endif
 
-" Nvim specific plugins
-call plug#begin('~/.vim/plugged')
-Plug 'neovim/nvim-lspconfig'
-call plug#end()
-
 lua << EOF
 require'lspconfig'.pyright.setup{}
 EOF
