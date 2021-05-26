@@ -28,6 +28,7 @@ export CARGO_HOME="$HOME/.local/src/cargo"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export GOPATH="$HOME/.local/src/go"
 export INDENT_PROFILE="$XDG_CONFIG_HOME/indent.pro"
+export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export LESSHISTFILE="-"
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
@@ -52,7 +53,17 @@ PATH="$GOPATH/bin:$PATH"
 # Add Cargo bin
 PATH="$CARGO_HOME/bin:$PATH"
 
+# Add Node bin
+PATH="$HOME/.local/src/node/bin:$PATH"
+
+# Add nvim bin
+PATH="$HOME/.local/src/nvim/bin:$PATH"
+
+# Add GHC bin
+PATH="$HOME/.local/src/.ghcup/bin:$PATH"
+
+# Add Cabal bin
+PATH="$HOME/.cabal/bin:$PATH"
+
 # Program defaults
 export LESS=-R
-
-export PATH="$HOME/.cargo/bin:$PATH"
