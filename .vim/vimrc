@@ -10,9 +10,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
+Plug 'mxw/vim-jsx'
 Plug 'neovim/nvim-lspconfig'
 Plug 'psf/black'
 Plug 'rust-lang/rust.vim'
@@ -27,9 +29,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 call plug#end()
-
 let mapleader=" "
-
 " Preliminaries
 	set nocompatible
 	syntax on
@@ -92,6 +92,9 @@ map <leader>] :call Check_tag()<CR>
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+" C function folding (note: this only sets the folds, use zm/zr to actually
+" close/open them)
+	autocmd VimEnter *.c %g/^{/normal!zf% | zR
 " Tab movement commands
 	map <C-n> :tabn<CR>
 	map <C-p> :tabp<CR>
