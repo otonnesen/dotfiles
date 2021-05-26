@@ -18,6 +18,10 @@ alias \
 # GitHub command
 alias git='hub'
 
+# Neovim
+alias vi='nvim'
+alias vimdiff='nvim -d'
+
 # Battery
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
 
@@ -25,14 +29,14 @@ alias bat='cat /sys/class/power_supply/BAT0/capacity'
 alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
 
 # Automatically background and disown zathura
-alias z="zathura --fork"
+alias z='zathura --fork'
 
 # Ensure course_shortcuts is not run as a child
-alias cs=". course_shortcuts"
+alias cs='. course_shortcuts'
 
 # Quickly go to $OLDPWD
-alias b="cd -"
+alias b='cd -'
 
 # Tmux stuff
-alias tl="tmux list-sessions"
-alias ta="tmux a -t"
+alias tl='tmux list-sessions'
+alias ta='tmux a -t'
