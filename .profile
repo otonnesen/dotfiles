@@ -53,7 +53,17 @@ PATH="$GOPATH/bin:$PATH"
 # Add Cargo bin
 PATH="$CARGO_HOME/bin:$PATH"
 
+# Add Node bin
+PATH="$HOME/.local/src/node/bin:$PATH"
+
+# Add nvim bin
+PATH="$HOME/.local/src/nvim/bin:$PATH"
+
+# Add GHC bin
+PATH="$HOME/.local/src/.ghcup/bin:$PATH"
+
+# Add Cabal bin
+PATH="$HOME/.cabal/bin:$PATH"
+
 # Program defaults
 export LESS=-R
-
-export PATH="$HOME/.cargo/bin:$PATH"
