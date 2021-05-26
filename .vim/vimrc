@@ -17,10 +17,10 @@ Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
 Plug 'neovim/nvim-lspconfig'
 Plug 'psf/black'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -101,7 +101,7 @@ map <leader>] :call Check_tag()<CR>
 " Move viminfo file
 	set viminfo+=n$HOME/.cache/viminfo
 " Remap CtrlP bind
-	let g:ctrlp_map = '<c-\>'
+	let g:ctrlp_map = '<C-\>'
 " Manually set filetype for *.g files
 	au BufRead,BufNewFile *.g set filetype=antlr3
 " vimwiki config
