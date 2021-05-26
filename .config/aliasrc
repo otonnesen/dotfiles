@@ -9,6 +9,7 @@ alias \
 	egrep='egrep --color=auto' \
 	fgrep='fgrep --color=auto' \
 	rgrep='rgrep --color=auto' \
+	diff='diff --color' \
 
 # More ls aliases
 alias \
