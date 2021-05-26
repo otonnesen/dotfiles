@@ -1,8 +1,8 @@
 [user]
 	email = oliver@tonnesen.com
 	name = Oliver Tonnesen
-[pager]
-	status = true
+[push]
+	default = matching
 [core]
 	pager = less -FRSX
-	excludesfile = ~/.config/gitignore
+	excludesfile = $XDG_CONFIG_HOME/git/ignore
