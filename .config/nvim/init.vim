@@ -10,6 +10,9 @@ endif
 
 lua << EOF
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.rls.setup{}
+require'lspconfig'.hls.setup{}
 EOF
 
 nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
