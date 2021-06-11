@@ -5,6 +5,8 @@
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'axvr/org.vim'
 Plug 'fatih/vim-go'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
 Plug 'leafgarland/typescript-vim'
@@ -22,7 +24,7 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'psf/black'
 Plug 'rktjmp/lush.nvim' | Plug 'npxbr/gruvbox.nvim'
-Plug 'romgrk/nvim-treesitter-context'
+" Plug 'romgrk/nvim-treesitter-context'
 Plug 'rust-lang/rust.vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
@@ -60,14 +62,23 @@ set backspace=
 " Write errors in linenumber column
 set signcolumn=number
 " vim-go
-	let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 " Indents
 set autoindent
 set smartindent
 " Command-mode autocompletion
 set wildmode=longest,list,full
 " Git commands
-nnoremap gb <cmd>Git blame<CR>
+" nnoremap gb <cmd>Git blame<CR>
+function ToggleGBlame()
+  let gblame = matchstr(@%, '\/tmp\/.*fugitiveblame')
+  if empty(gblame)
+    execute 'Git blame'
+  else
+    execute 'q'
+  endif
+endfunction
+nnoremap gb <cmd>call ToggleGBlame()<CR>
 " Guideline
 highlight ColorColumn ctermbg=16
 nnoremap <leader>y :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
@@ -87,7 +98,7 @@ map <leader>c :w! \| !compiler <c-r>%<CR><CR>
 " Clean tex build files
 autocmd VimLeave *.tex !texclear %
 " Apply Xresources changes
-	autocmd VimLeave ~/.Xresources !xrdb %
+autocmd VimLeave ~/.Xresources !xrdb %
 " Recursively look for tags file in `./[../]*.git/tags` or `./[../]*tags`.
 " Generate tags files from in .git directory with `ctags -R ..` or from  in
 " the base project directory with `ctags -R .`.
@@ -159,12 +170,43 @@ nnoremap <C-\> <cmd>lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>\ <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap z= <cmd>lua require('telescope.builtin').spell_suggest()<CR>
 
+" Compe
+set completeopt=menuone,noselect
+lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+  };
+}
+EOF
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+
 " vimwiki config
 let personal = {}
 let personal.path = "~/notes/wikis/personal"
 " I don't know if Go requires special set up or not, and haven't tested it
-let personal.nested_syntaxes = {'go': 'go'}
-let g:vimwiki_list = [pani, personal]
+let personal.nested_syntaxes = {'go': 'go', 'python': 'python'}
+let g:vimwiki_list = [personal]
 " Thin cursor when in insert mode
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
