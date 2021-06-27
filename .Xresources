@@ -1,6 +1,6 @@
 st.alpha: 0.97
 st.alphaUnfocused: 0.8
-st.font: Inconsolata-16;
+st.font: FiraCode-14;
 dmenu.font: Inconsolata-16
 dmenu.lineheight: 40
 
