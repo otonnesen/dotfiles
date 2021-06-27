@@ -1,0 +1,45 @@
+#!/bin/bash
+# For use by sxhkd to figure out which desktop to focus based on the currently
+# focused monitor.
+
+flag="$1 $2"
+num=$3
+node=$4
+monitor=$(bspc query -M -m)
+eDP1=$(bspc query -M -m eDP1)
+DP2_1=$(bspc query -M -m DP2-1)
+DP2_2=$(bspc query -M -m DP2-2)
+
+if [[ $monitor = $eDP1 ]]; then
+	pref=""
+elif [[ $monitor = $DP2_1 ]]; then
+	pref="X"
+elif [[ $monitor = $DP2_2 ]]; then
+	pref="XX"
+fi
+
+if [[ $num = "^1" ]]; then
+	dig="I"
+elif [[ $num = "^2" ]]; then
+	dig="II"
+elif [[ $num = "^3" ]]; then
+	dig="III"
+elif [[ $num = "^4" ]]; then
+	dig="IV"
+elif [[ $num = "^5" ]]; then
+	dig="V"
+elif [[ $num = "^6" ]]; then
+	dig="VI"
+elif [[ $num = "^7" ]]; then
+	dig="VII"
+elif [[ $num = "^8" ]]; then
+	dig="VIII"
+elif [[ $num = "^9" ]]; then
+	dig="IX"
+elif [[ $num = "^10" ]]; then
+	dig="X"
+fi
+
+name=$pref$dig
+
+bspc $flag $name $node

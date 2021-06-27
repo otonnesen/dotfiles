@@ -2,6 +2,5 @@
 
 # Runs on X initialization
 
-setbg				# wallpaper
 compton &			# transparency
 sxhkd &				# keybinds

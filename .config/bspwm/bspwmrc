@@ -1,9 +1,19 @@
-#! /bin/sh
+#! /bin/bash
 
+# `.` here to get env vars
+. config_monitors
+
+setbg
 launch_polybar
 xrdb ~/.Xresources	# reload X resources for some reason
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
+
+if [[ $PRIMARY_MONITOR == 'DP2-2' ]]; then
+	bspc monitor DP2-1 -d XI XII XIII XIV XV XVI XVII XVIII XIX XX
+	bspc monitor DP2-2 -d XXI XXII XXIII XXIV XXV XXVI XXVII XXVIII XXIX XXX
+	bspc monitor -f DP2-2
+fi
 
 bspc config border_width         2
 bspc config window_gap          24

@@ -1,0 +1,12 @@
+#!/bin/bash
+# For use by sxhkd to refocus the node if it's sent to a new monitor.
+
+flag="$1 $2"
+dir=$3
+node=$4
+
+bspc $flag $dir
+
+if [[ $flag = "node -m" ]]; then
+	bspc node -f $node
+fi

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Terminate running bars
 killall -q polybar
@@ -6,6 +6,16 @@ killall -q polybar
 # Wait for procs to shutdown
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
+# If extra monitors are connected default will go to laptop screen, otherwise
+# it'll go to the centre external monitor (based on PRIMARY_MONITOR env var)
 polybar default >> /tmp/polybar.log 2>&1 &
+
+DP2_1=$(xrandr --query | grep 'DP2-1')
+DP2_2=$(xrandr --query | grep 'DP2-2')
+
+if [[ $DP2_1 = *[^s]connected* && $DP2_2 = *[^s]connected* ]]; then
+	polybar left > /dev/null 2>&1 &
+	polybar right > /dev/null 2>&1 &
+fi
 
 echo "Bar launched..."

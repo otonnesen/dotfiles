@@ -52,10 +52,13 @@ super + {_,shift + }{h,j,k,l}
 	handle_movement {f,s} {west,south,north,east} $(bspc query -N -n)
 # Focus or send to given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	handle_desktop {desktop -f,node -d} '^{1-9,10}' $(bspc query -N -n)
 # Focus the next/previous desktop
 super + {_,shift + }bracket{left,right}
 	bspc {desktop -f,node -d} {prev,next}.local
+# Focus or send to left/right monitor
+super + ctrl {_,shift + }{h,l}
+	handle_monitor {monitor -f,node -m} {west,east} $(bspc query -N -n)
 # Focus the older or newer node in the focus history
 super + {o,i}
 	bspc wm -h off; \
