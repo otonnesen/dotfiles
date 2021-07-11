@@ -1,2 +1,6 @@
-#!/bin/sh
-xwallpaper --zoom /home/oliver/.config/wall.png
+#!/bin/bash
+if [[ $PRIMARY_MONITOR == 'DP2-2' ]]; then
+	xwallpaper --output eDP1 --zoom Pictures/wallpapers/win95.jpg --output DP2-2 --zoom Pictures/wallpapers/tree.jpg --output DP2-1 --zoom Pictures/wallpapers/bike.png
+else
+	xwallpaper --zoom /home/oliver/.config/wall.png
+fi
