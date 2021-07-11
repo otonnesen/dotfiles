@@ -79,6 +79,7 @@ function ToggleGBlame()
   endif
 endfunction
 nnoremap gb <cmd>call ToggleGBlame()<CR>
+map <leader>g <cmd>call ToggleGBlame()<CR>
 " Guideline
 highlight ColorColumn ctermbg=16
 nnoremap <leader>y :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
@@ -115,6 +116,9 @@ map <C-p> :tabp<CR>
 " Language servers
 lua << EOF
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.hls.setup{}
 EOF
 
 " LSP binds
