@@ -40,6 +40,13 @@ elif [[ $num = "^10" ]]; then
 	dig="X"
 fi
 
-name=$pref$dig
-
-bspc $flag $name $node
+if [[ $flag = "desktop -f" ]]; then
+	n1="X"
+	n2="XX"
+	bspc $flag $dig
+	bspc $flag $n1$dig
+	bspc $flag $n2$dig
+elif [[ $flag = "node -d" ]]; then
+	name=$pref$dig
+	bspc $flag $name $node
+fi
