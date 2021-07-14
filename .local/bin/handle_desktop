@@ -12,10 +12,13 @@ DP2_2=$(bspc query -M -m DP2-2)
 
 if [[ $monitor = $eDP1 ]]; then
 	pref=""
+	refocus="eDP1"
 elif [[ $monitor = $DP2_1 ]]; then
 	pref="X"
+	refocus="DP2-1"
 elif [[ $monitor = $DP2_2 ]]; then
 	pref="XX"
+	refocus="DP2-2"
 fi
 
 if [[ $num = "^1" ]]; then
@@ -46,6 +49,7 @@ if [[ $flag = "desktop -f" ]]; then
 	bspc $flag $dig
 	bspc $flag $n1$dig
 	bspc $flag $n2$dig
+	bspc monitor -f $refocus
 elif [[ $flag = "node -d" ]]; then
 	name=$pref$dig
 	bspc $flag $name $node
