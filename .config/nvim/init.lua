@@ -22,7 +22,6 @@ vim.api.nvim_exec(
 local use = require("packer").use
 require("packer").startup(function()
   use "axvr/org.vim"
-  use "axvr/org.vim"
   use "fatih/vim-go"
   use "hrsh7th/nvim-compe"
   use "hrsh7th/vim-vsnip"
@@ -108,6 +107,9 @@ set.smartindent = true
 
 -- Command-mode autocompletion
 set.wildmode = "longest,list,full"
+
+-- Set listchars
+set.listchars = "tab:>-,trail:~,extends:>,precedes:<,space:."
 
 -- Git commands
 function ToggleGBlame()
