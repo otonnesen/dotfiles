@@ -3,8 +3,6 @@
 # Color stuff
 alias \
 	ls='ls -h --color=auto --group-directories-first' \
-	dir='dir --color=auto' \
-	vdir='vdir --color=auto' \
 	grep='grep --color=auto' \
 	egrep='egrep --color=auto' \
 	fgrep='fgrep --color=auto' \
@@ -14,14 +12,15 @@ alias \
 # More ls aliases
 alias \
 	ll='ls -l' \
-	la='ls -A'
+	la='ls -A' \
 
 # GitHub command
 alias git='hub'
 
 # Neovim
-alias vi='nvim'
-alias vimdiff='nvim -d'
+alias \
+    vi='nvim' \
+    vimdiff='nvim -d' \
 
 # Battery
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
@@ -41,3 +40,14 @@ alias b='cd -'
 # Tmux stuff
 alias tl='tmux list-sessions'
 alias ta='tmux a -t'
+
+# Git stuff
+alias \
+    gl='git log' \
+    glo='git log --oneline' \
+    gln='git log -n' \
+    glon='git log --oneline -n' \
+    gits='git status -sb' \
+    gr='cd $(git rev-parse --show-toplevel)' \
+    gd='git diff' \
+    ghead='git log --oneline -n 1 --stat' \

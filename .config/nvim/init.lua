@@ -69,12 +69,18 @@ require("packer").startup(function()
   use "vimwiki/vimwiki"
 end)
 
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 local set = vim.o
 
 execute("syntax enable")
 execute("filetype plugin indent on")
+
+-- Unmap F1
+vim.api.nvim_set_keymap("n", "<F1>", "<nop>", {})
+vim.api.nvim_set_keymap("i", "<F1>", "<nop>", {})
+vim.api.nvim_set_keymap("v", "<F1>", "<nop>", {})
+
 
 set.compatible = false
 set.encoding = "utf-8"
@@ -104,6 +110,12 @@ vim.g.go_fmt_command = "goimports"
 -- Indents
 set.autoindent = true
 set.smartindent = true
+-- Tabs := 4 spaces
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
+set.smarttab = true
+set.expandtab = true
 
 -- Command-mode autocompletion
 set.wildmode = "longest,list,full"
@@ -114,7 +126,7 @@ set.listchars = "tab:>-,trail:~,extends:>,precedes:<,space:."
 -- Git commands
 function ToggleGBlame()
   local gblame = fn.matchstr(fn.bufname("%"), "/tmp/.*fugitiveblame")
-  if gblame == ''
+  if gblame == ""
   then
     execute("Git blame")
   else
@@ -173,6 +185,8 @@ vim.api.nvim_set_keymap("n", "[g", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>"
 vim.api.nvim_set_keymap("n", "]g", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>",
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>",
   { noremap = true, silent = true })
@@ -234,7 +248,7 @@ require("neorg").setup({
   },
 })
 
-local parser_configs = require'nvim-treesitter.parsers'.get_parser_configs()
+local parser_configs = require"nvim-treesitter.parsers".get_parser_configs()
 
 parser_configs.norg = {
   install_info = {
@@ -249,7 +263,7 @@ parser_configs.norg = {
 local neorg_leader = "<Leader>o" -- You may also want to set this to <Leader>o for "organization"
 
 -- Require the user callbacks module, which allows us to tap into the core of Neorg
-local neorg_callbacks = require('neorg.callbacks')
+local neorg_callbacks = require("neorg.callbacks")
 
 -- Listen for the enable_keybinds event, which signals a "ready" state meaning we can bind keys.
 -- This hook will be called several times, e.g. whenever the Neorg Mode changes or an event that
@@ -290,7 +304,7 @@ require("compe").setup({
   autocomplete = true;
   debug = false;
   min_length = 1;
-  preselect = 'enable';
+  preselect = "enable";
   throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
