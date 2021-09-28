@@ -1,0 +1,8 @@
+alias cf='cd ~/.config && ls -A' \
+sc='cd ~/.local/bin && ls -A' \
+bf="$EDITOR ~/.config/files" \
+bd="$EDITOR ~/.config/directories" \
+cfa="$EDITOR ~/.config/aliasrc" \
+cfz="$EDITOR $ZDOTDIR/.zshrc" \
+cfv="$EDITOR ~/.vim/vimrc" \
+cfp="$EDITOR ~/.profile" \
