@@ -3,6 +3,6 @@ bd		~/.config/directories
 bw		~/.config/bookmarks
 cfa		~/.config/aliasrc
 cfz		$ZDOTDIR/.zshrc
-cfv		~/.vim/vimrc
+cfv		~/.config/nvim/init.lua
 cfk		~/.config/sxhkd/sxhkdrc
 cfp		~/.profile

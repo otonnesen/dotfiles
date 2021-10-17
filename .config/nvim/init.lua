@@ -21,10 +21,14 @@ vim.api.nvim_exec(
 
 local use = require("packer").use
 require("packer").startup(function()
+  use "wbthomason/packer.nvim"
   use "axvr/org.vim"
   use "fatih/vim-go"
-  use "hrsh7th/nvim-compe"
-  use "hrsh7th/vim-vsnip"
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
   use "jrozner/vim-antlr"
   use "junegunn/goyo.vim"
   use "leafgarland/typescript-vim"
@@ -32,15 +36,15 @@ require("packer").startup(function()
   use "majutsushi/tagbar"
   use "mxw/vim-jsx"
   use "neovim/nvim-lspconfig"
-  use "vhyrro/neorg"
+  use {
+    "nvim-neorg/neorg",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
   use "neovimhaskell/haskell-vim"
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-telescope/telescope.nvim"
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    requires = { "nvim-treesitter/nvim-treesitter" }
-  }
+  use "nvim-treesitter/nvim-treesitter"
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
     requires = { "nvim-treesitter/nvim-treesitter" }
@@ -146,7 +150,7 @@ vim.api.nvim_set_keymap("n", "<leader>y",
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Goyo | set linebreak<CR>", {})
 
 -- Spellcheck
-vim.api.nvim_set_keymap("n", "<leader>s",
+vim.api.nvim_set_keymap("n", "<leader>o",
   "<cmd>setlocal spell! spelllang=en_ca<CR>", {})
 
 -- Tagbar
@@ -193,8 +197,27 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>",
 vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",
   { noremap = true })
 
--- Treesitter textobjects
+-- Norg treesitter parser
+-- NOTE: This has to run before the `nvim-treesitter.configs` setup
+local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+        files = { "src/parser.c", "src/scanner.cc" },
+        branch = "main"
+    },
+}
+
+-- Treesitter
 require("nvim-treesitter.configs").setup({
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
   textobjects = {
     select = {
       enable = true,
@@ -220,43 +243,57 @@ require("nvim-treesitter.configs").setup({
     --   },
     -- }
   },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  }
+})
+
+-- This breaks syntax highlighting for some reason. It seems to work fine when
+-- enabled per-filetype in nvim/after/ftplugin/{filetype}.vim
+-- set.foldmethod = "expr"
+-- set.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- Telescope
+vim.api.nvim_set_keymap("n", "<C-\\>", [[<cmd>lua require("telescope.builtin").find_files()<CR>]],
+  { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>\\", [[<cmd>lua require("telescope.builtin").live_grep()<CR>]],
+  { noremap = true })
+vim.api.nvim_set_keymap("n", "z=", [[<cmd>lua require("telescope.builtin").spell_suggest()<CR>]],
+  { noremap = true })
+
+-- Cmp
+set.completeopt = "menu,menuone,noselect"
+
+local cmp = require("cmp")
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            fn["vsnip#anonymous"](args.body)
+        end,
+    },
+    mapping = {
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+      { name = 'buffer' },
+    }
 })
 
 -- Neorg
 require("neorg").setup({
   load = {
     ["core.defaults"] = {},
-    ["core.keybinds"] = {
-      config = {
-        default_keybinds = true,
-      },
-    },
-    -- ["core.norg.concealer"] = {},
+    ["core.norg.concealer"] = {},
     ["core.norg.dirman"] = {
       config = {
         workspaces = {
-          default = "~/notes/neorg"
+          default = "~/notes/neorg",
         },
       },
     },
   },
 })
-
-local parser_configs = require"nvim-treesitter.parsers".get_parser_configs()
-
-parser_configs.norg = {
-  install_info = {
-    url = "https://github.com/vhyrro/tree-sitter-norg",
-    files = { "src/parser.c" },
-    branch = "main"
-  },
-}
 
 -- This sets the leader for all Neorg keybinds. It is separate from the regular <Leader>,
 -- And allows you to shove every Neorg keybind under one "umbrella".
@@ -284,46 +321,6 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 	}, { silent = true, noremap = true })
 
 end)
-
-set.foldmethod = "expr"
-set.foldexpr = "nvim_treesitter#foldexpr()"
-
--- Telescope
-vim.api.nvim_set_keymap("n", "<C-\\>", [[<cmd>lua require("telescope.builtin").find_files()<CR>]],
-  { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>\\", [[<cmd>lua require("telescope.builtin").live_grep()<CR>]],
-  { noremap = true })
-vim.api.nvim_set_keymap("n", "z=", [[<cmd>lua require("telescope.builtin").spell_suggest()<CR>]],
-  { noremap = true })
-
--- Compe
-set.completeopt = "menuone,noselect"
-
-require("compe").setup({
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = "enable";
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    nvim_treesitter = true;
-    vsnip = true;
-    ultisnips = true;
-  };
-})
 
 vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()",
   { noremap = true, silent = true, expr = true })
