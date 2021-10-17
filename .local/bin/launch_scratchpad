@@ -1,3 +1,4 @@
 #!/usr/bin/sh
-[ -s /tmp/scratchid ] && exit # Exit if there's already a scratchpad open
-st -c scratchpad -e /home/oliver/.local/bin/init_scratchpad 2>/dev/null &
+bspc query -N -n .floating > /tmp/scratchid
+$SHELL
+cat /dev/null > /tmp/scratchid # Clear scratchid
