@@ -234,14 +234,13 @@ require("nvim-treesitter.configs").setup({
         },
       },
     },
-    -- TODO: Really cool, but I can't find a good keybind for this!
-    -- lsp_interop = {
-    --   enable = true,
-    --   peek_definition_code = {
-    --     [--df--] = --@function.outer--,
-    --     [--dF--] = --@class.outer--,
-    --   },
-    -- }
+    lsp_interop = {
+      enable = true,
+      peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dF"] = "@class.outer",
+      },
+    }
   },
 })
 
@@ -249,6 +248,20 @@ require("nvim-treesitter.configs").setup({
 -- enabled per-filetype in nvim/after/ftplugin/{filetype}.vim
 -- set.foldmethod = "expr"
 -- set.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- Treesitter Text Objects
+vim.api.nvim_set_keymap("n", "<leader>snf", "<cmd>TSTextobjectSwapNext @function.outer<CR>",
+  { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>spf", "<cmd>TSTextobjectSwapPrevious @function.outer<CR>",
+  { noremap = true })
+
+
+-- Treesitter highlighting defaults Python keyword operators (`and`, `in`,
+-- etc.) to be highlighted the same as regular operators (`&`, `==`, etc.) i.e.
+-- white instead of red, which looks pretty odd. This instead maps them to be
+-- highlighted the same as regular keywords (`for`, `def`, etc.) which seems
+-- more coherent.
+vim.cmd("highlight link pythonTSKeywordOperator Keyword")
 
 -- Telescope
 vim.api.nvim_set_keymap("n", "<C-\\>", [[<cmd>lua require("telescope.builtin").find_files()<CR>]],
@@ -271,7 +284,7 @@ cmp.setup({
     },
     mapping = {
       ['<C-Space>'] = cmp.mapping.complete(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm(),
     },
     sources = {
       { name = 'nvim_lsp' },
