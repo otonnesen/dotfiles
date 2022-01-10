@@ -1,14 +1,11 @@
 local lspconfig = require("lspconfig")
 
-lspconfig.pyright.setup({
-  capabilities = require("cmp_nvim_lsp").update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  ),
-})
-lspconfig.gopls.setup({})
-lspconfig.rust_analyzer.setup({})
-lspconfig.hls.setup({})
-lspconfig.tsserver.setup({})
+-- LSPs are now dynamically set up with nvim-lsp-installer.
+-- lspconfig.pyright.setup({})
+-- lspconfig.gopls.setup({})
+-- lspconfig.rust_analyzer.setup({})
+-- lspconfig.hls.setup({})
+-- lspconfig.tsserver.setup({})
 
 -- LSP binds
 vim.api.nvim_set_keymap(

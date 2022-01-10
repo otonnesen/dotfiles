@@ -41,6 +41,9 @@ require("packer").startup(function()
 
   use("neovim/nvim-lspconfig") -- Neovim LSP defaults
 
+  -- Automatic LSP installer
+  use({ "williamboman/nvim-lsp-installer", requires = { use("neovim/nvim-lspconfig") } })
+
   use("neovimhaskell/haskell-vim") -- Haskell utils
 
   -- Misc. utils required for other plugins
