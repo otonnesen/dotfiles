@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 local set = vim.o
 -- Line nums + relative line nums
 set.number = true

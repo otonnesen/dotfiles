@@ -27,6 +27,9 @@ require("packer").startup(function()
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/vim-vsnip")
 
+  -- Extra snippets
+  use("rafamadriz/friendly-snippets")
+
   use("jrozner/vim-antlr") -- ANTLR
 
   use("junegunn/goyo.vim") -- Reader mode
@@ -42,13 +45,13 @@ require("packer").startup(function()
   use("neovim/nvim-lspconfig") -- Neovim LSP defaults
 
   -- Automatic LSP installer
-  use({ "williamboman/nvim-lsp-installer", requires = { use("neovim/nvim-lspconfig") } })
+  use({ "williamboman/nvim-lsp-installer", requires = { "neovim/nvim-lspconfig" } })
 
   use("neovimhaskell/haskell-vim") -- Haskell utils
 
   -- Misc. utils required for other plugins
   use({ "nvim-lua/popup.nvim", requires = {
-    use("nvim-lua/plenary.nvim"),
+    "nvim-lua/plenary.nvim",
   } })
 
   use("nvim-telescope/telescope.nvim") -- Fuzzy finder
@@ -71,7 +74,7 @@ require("packer").startup(function()
 
   use("vimwiki/vimwiki") -- Wiki plugin
 
-  use({ "npxbr/gruvbox.nvim", requires = { use("rktjmp/lush.nvim") } }) -- Colorscheme
+  use({ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } }) -- Colorscheme
 
   -- Statusline
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
@@ -91,4 +94,8 @@ require("packer").startup(function()
   --   "vim-airline/vim-airline",
   --   requires = { "vim-airline/vim-airline-themes" },
   -- })
+
+  use("mfussenegger/nvim-dap")
+
+  use("jose-elias-alvarez/null-ls.nvim")
 end)

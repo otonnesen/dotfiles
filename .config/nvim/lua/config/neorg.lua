@@ -41,5 +41,6 @@ require("neorg").setup({
         engine = "nvim-cmp",
       },
     },
+  ["core.norg.qol.toc"] = {}
   },
 })
