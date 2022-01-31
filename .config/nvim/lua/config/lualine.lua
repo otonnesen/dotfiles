@@ -193,13 +193,13 @@ ins_left({
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left({
-  function()
-    return "%="
-  end,
-})
+-- ins_left({
+--   function()
+--     return "%="
+--   end,
+-- })
 
-ins_left({
+ins_right({
   -- Lsp server name .
   function()
     local msg = "No Active Lsp"
@@ -218,6 +218,11 @@ ins_left({
   end,
   icon = " LSP:",
   color = { fg = "#ffffff", gui = "bold" },
+})
+
+
+ins_right({
+  "filetype",
 })
 
 -- Add components to right sections
