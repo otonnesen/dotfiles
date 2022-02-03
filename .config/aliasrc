@@ -14,9 +14,6 @@ alias \
 	ll='ls -l' \
 	la='ls -A' \
 
-# GitHub command
-alias git='hub'
-
 # Neovim
 alias \
     vi='nvim' \
@@ -51,3 +48,15 @@ alias \
     gr='cd $(git rev-parse --show-toplevel)' \
     gd='git diff' \
     ghead='git log --oneline -n 1 --stat' \
+
+# Docker stuff
+alias \
+    dc='docker-compose' \
+    dcd='dc down' \
+    dcu='dc up' \
+
+alias python3=python3.7
+
+alias wi="nvim -c NeorgStart"
+
+alias nixs="nix-shell --command zsh"

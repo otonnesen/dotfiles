@@ -16,6 +16,10 @@ autoload -U colors && colors
 
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
 
+if [[ $IN_NIX_SHELL ]]; then
+    PS1="(nix-shell) $PS1"
+fi
+
 # Load aliases and shortcuts
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
@@ -39,6 +43,10 @@ zmodload zsh/complist
 
 # Add Rust completions
 fpath+="$ZDOTDIR/functions"
+
+# Add Nix completions
+source $ZDOTDIR/plugins/nix-zsh-completions/nix-zsh-completions.plugin.zsh
+fpath=($ZDOTDIR/plugins/nix-zsh-completions $fpath)
 
 compinit
 
@@ -77,3 +85,7 @@ zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#)*=0=01;31"
 zstyle ":completion:*:kill:*" command "ps -u $USER -o pid,%cpu,tty,cputime,cmd"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+eval "$(direnv hook zsh)"
