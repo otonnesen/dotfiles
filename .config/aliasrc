@@ -48,7 +48,7 @@ alias \
     gr='cd $(git rev-parse --show-toplevel)' \
     gd='git diff' \
     ghead='git log --oneline -n 1 --stat' \
-    glwt='prefix=$(git worktree list | head -n 1 | awk "{print \$1}") && git worktree list | tail -n +2 | awk "{print \$1}" | sed "s~$prefix/\(.*\)~\1~g"' \
+    glwt='prefix=$(git worktree list | head -n 1 | awk "{print \$1}") && git worktree list | tail -n +2 | awk "{print \$1}" | sed "s~$prefix/\(.*\)~\1/~g" | tree --fromfile' \
 
 # Docker stuff
 alias \
