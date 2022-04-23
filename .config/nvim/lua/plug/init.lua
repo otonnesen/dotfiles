@@ -98,4 +98,8 @@ require("packer").startup(function()
   use("mfussenegger/nvim-dap")
 
   use("jose-elias-alvarez/null-ls.nvim")
+
+  use("nanotee/sqls.nvim")
+
+  use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } })
 end)
