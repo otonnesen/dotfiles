@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+shell_shortcuts="$HOME/.config/shortcutrc"
+
+printf "alias " > $"$shell_shortcuts"
+
+# Load `directories` file
+sed "s/\s*#.*$//;/^\s*$/d" "$HOME/.config/directories" | tee >(awk '{print $1"='\''cd "$2" && ls -A'\'' \\"}' >> "$shell_shortcuts")
+
+# Load `files` file
+sed "s/\s*#.*$//;/^\s*$/d"  "$HOME/.config/files" | tee >(awk '{print $1"=\"$EDITOR "$2"\" \\"}' >> "$shell_shortcuts")

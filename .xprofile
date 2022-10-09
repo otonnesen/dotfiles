@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# Runs on X initialization
+
+compton &           # transparency
+sxhkd &             # keybinds
+xss-lock lock &     # lock-on-suspend
+flameshot &         # screenshots
+xmodmap ~/.xmodmap  # ctrl <-> caps

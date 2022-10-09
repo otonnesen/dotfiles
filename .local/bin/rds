@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | rg rds)" == "rds" ]; then
+	tmux attach -t rds;
+	exit
+fi
+
+tmux new -s rds -d
+
+tmux rename-window -t rds stage
+tmux send-keys -t stage 'psql -U olivertonnesen -w -h rds-postgres-stage.chenp89uvpd6.us-east-1.rds.amazonaws.com -p 5432 -d panidigital --password'
+
+tmux new-window -t rds
+tmux rename-window -t rds prod
+tmux send-keys -t prod 'psql -U olivertonnesen -w -h rds-postgres-prod.chenp89uvpd6.us-east-1.rds.amazonaws.com -p 5432 -d panidigital --password'
+
+tmux new-window -t rds
+tmux rename-window -t rds vpn
+tmux send-keys -t vpn 'sudo openvpn --config ~/creds/olivertonnesen.ovpn' C-m
+
+tmux select-window -t rds:2
+
+tmux attach -t rds

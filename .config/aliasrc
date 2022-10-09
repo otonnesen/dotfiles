@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# Color stuff
+alias \
+	ls='ls -h --color=auto --group-directories-first' \
+	grep='grep --color=auto' \
+	egrep='egrep --color=auto' \
+	fgrep='fgrep --color=auto' \
+	rgrep='rgrep --color=auto' \
+	diff='diff --color' \
+
+# fd
+alias fd='fdfind'
+
+# Dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
+# More ls aliases
+alias \
+	ll='ls -l' \
+	la='ls -A' \
+
+# Neovim
+alias \
+    vi='nvim' \
+    vimdiff='nvim -d' \
+
+# Battery
+alias bat='cat /sys/class/power_supply/BAT0/capacity'
+
+# Set default directory for calcurse
+alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
+
+# Automatically background and disown zathura
+alias z='zathura --fork'
+
+# Ensure course_shortcuts is not run as a child
+alias cs='. course_shortcuts'
+
+# Quickly go to $OLDPWD
+alias b='cd -'
+
+# Tmux stuff
+alias tl='tmux list-sessions'
+alias ta='tmux a -t'
+
+# Git stuff
+alias \
+    gl='git log' \
+    glo='git log --oneline' \
+    gln='git log -n' \
+    glon='git log --oneline -n' \
+    gits='git status -sb' \
+    gr='cd $(git rev-parse --show-toplevel)' \
+    gd='git diff' \
+    ghead='git log --oneline -n 1 --stat' \
+    glwt='prefix=$(git worktree list | head -n 1 | awk "{print \$1}") && git worktree list | tail -n +2 | awk "{print \$1}" | sed "s~$prefix/\(.*\)~\1/~g" | tree --fromfile' \
+
+# Docker stuff
+alias \
+    dc='docker-compose' \
+    dcd='dc down' \
+    dcu='dc up' \
+
+# Pani backend venv
+# alias pv='source $(git rev-parse --show-toplevel)/venv/bin/activate'
+
+# Pani db
+alias p='psql -U postgres -w -h localhost -p 5432 -d panidigital'
+
+# Pani alembic
+alias alembic='alembic -c database/database/migrations/alembic.ini -x pg_url="postgresql+psycopg2://postgres:password@localhost:5432/panidigital"'
+
+alias wi='nvim -c "Neorg workspace pani"'
+
+alias nixs="nix-shell --command zsh"
+
+alias pydirenv='echo "export VIRTUAL_ENV=./venv\nlayout python-venv python3.10" > ./.envrc'

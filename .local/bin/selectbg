@@ -1,0 +1,9 @@
+#!/bin/sh
+
+monitor=$(echo "DP-2-1\neDP-1\nDP-2-2" | dmenu)
+
+cp $HOME/Pictures/wallpapers/$(ls $HOME/Pictures/wallpapers | dmenu) $HOME/.config/wall-$monitor.png
+
+setbg
+
+bspc_refocus

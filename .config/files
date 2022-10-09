@@ -1,0 +1,9 @@
+bf		~/.config/files
+bd		~/.config/directories
+bw		~/.config/bookmarks
+cfa		~/.config/aliasrc
+cfz		$ZDOTDIR/.zshrc
+cfv		~/.vim/vimrc
+cfk		~/.config/sxhkd/sxhkdrc
+cfp		~/.profile
+wi      ~/notes/wikis/pani/index.wiki

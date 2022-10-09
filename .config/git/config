@@ -1,0 +1,12 @@
+[user]
+	email = oliver.tonnesen@panienergy.com
+	name = Oliver Tonnesen
+[push]
+	default = matching
+[core]
+	pager = less -FRSX
+	excludesfile = $XDG_CONFIG_HOME/git/ignore
+[pull]
+    ff = only
+[push]
+	default = current

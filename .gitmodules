@@ -1,0 +1,3 @@
+[submodule ".config/zsh/plugins/nix-zsh-completions"]
+	path = .config/zsh/plugins/nix-zsh-completions
+	url = https://github.com/spwhitt/nix-zsh-completions

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DP2_1=$(xrandr --query | grep 'DP-2-1')
+
+if [[ $DP2_1 = *[^s]connected* ]]; then
+	echo "DP-2-1" > /tmp/primary-monitor
+	export PRIMARY_MONITOR="DP-2-1"
+    xrandr --output DP-2-1 --primary --output eDP-1 --off  # --pos 0x0 --output eDP-1 --pos 1920x0
+    xrandr --output eDP-1 --auto
+else
+	echo "eDP-1" > /tmp/primary-monitor
+    xrandr --output eDP-1 --pos 0x0
+	export PRIMARY_MONITOR="eDP-1"
+fi

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | rg todo)" == "todo" ]; then
+	tmux attach -t todo;
+	exit
+fi
+
+tmux new -s todo -d
+
+tmux rename-window -t todo todo
+tmux send-keys -t todo 'wi' C-m
+
+tmux select-window -t todo:0
+
+tmux attach -t todo

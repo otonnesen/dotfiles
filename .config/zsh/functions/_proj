@@ -1,0 +1,7 @@
+#compdef _proj proj
+
+_proj() {
+	local -a completions
+	completions=( $(tmux list-sessions 2>/dev/null | sed 's/:.*//g') )
+	_arguments '-p:tmux sessions:( $completions )' '-d:directory:_path_files -W ~/panidigital/panidigital -/'
+}

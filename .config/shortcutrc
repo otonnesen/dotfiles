@@ -1,0 +1,14 @@
+alias cf='cd ~/.config && ls -A' \
+sc='cd ~/.local/bin && ls -A' \
+pb='cd ~/panidigital/backend && ls -A' \
+pf='cd ~/panidigital/frontend && ls -A' \
+pp='cd ~/panidigital/panidigital && ls -A' \
+bf="$EDITOR ~/.config/files" \
+bd="$EDITOR ~/.config/directories" \
+bw="$EDITOR ~/.config/bookmarks" \
+cfa="$EDITOR ~/.config/aliasrc" \
+cfz="$EDITOR $ZDOTDIR/.zshrc" \
+cfv="$EDITOR ~/.vim/vimrc" \
+cfk="$EDITOR ~/.config/sxhkd/sxhkdrc" \
+cfp="$EDITOR ~/.profile" \
+wi="$EDITOR ~/notes/wikis/pani/index.wiki" \
