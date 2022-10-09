@@ -10,8 +10,8 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 # it'll go to the centre external monitor (based on PRIMARY_MONITOR env var)
 polybar default >> /tmp/polybar.log 2>&1 &
 
-DP2_1=$(xrandr --query | grep 'DP2-1')
-DP2_2=$(xrandr --query | grep 'DP2-2')
+DP2_1=$(xrandr --query | grep 'DP-2-1')
+DP2_2=$(xrandr --query | grep 'DP-2-2')
 
 if [[ $DP2_1 = *[^s]connected* && $DP2_2 = *[^s]connected* ]]; then
 	polybar left > /dev/null 2>&1 &

@@ -1,0 +1,28 @@
+#! /bin/bash
+
+# `.` here to get env vars
+# . config_monitors.home
+
+setbg
+launch_polybar
+xrdb ~/.Xresources	# reload X resources for some reason
+
+bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+
+if [[ $PRIMARY_MONITOR == 'DP-2-2' ]]; then
+	bspc monitor DP-2-1 -d XI XII XIII XIV XV XVI XVII XVIII XIX XX
+	bspc monitor DP-2-2 -d XXI XXII XXIII XXIV XXV XXVI XXVII XXVIII XXIX XXX
+	bspc monitor -f DP-2-2
+fi
+
+bspc config border_width         2
+bspc config window_gap          24
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Zathura state=tiled
+
+bspc rule -a scratchpad sticky=on state=floating
+cat /dev/null > /tmp/scratchid # Clear old scratchid if not already done

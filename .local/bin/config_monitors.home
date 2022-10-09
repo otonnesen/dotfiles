@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This works for exactly the setup I have and nothing else:
+# +--------+
+# |        |
+# |        +---------------+
+# |  1920x |               |
+# |  1080  |   1920x1080   +--------------+
+# |  vert  |   horizontal  |              |
+# |        |               |   1920x1080  |
+# |        +---------------+   horizontal |
+# |        |               |   (laptop)   |
+# +--------+               +--------------+
+
+DP2_1=$(xrandr --query | grep 'DP-2-1')
+DP2_2=$(xrandr --query | grep 'DP-2-2')
+
+if [[ $DP2_1 = *[^s]connected* && $DP2_2 = *[^s]connected* ]]; then
+	echo "DP-2-2" > /tmp/primary-monitor
+	export PRIMARY_MONITOR="DP-2-2"
+	xrandr --output DP-2-2 --primary --auto --pos 1080x420 --output DP-2-1 --rotate left --auto --pos 0x0 --output eDP-1 --auto --pos 3000x1000
+else
+	echo "eDP-1" > /tmp/primary-monitor
+	export PRIMARY_MONITOR="eDP-1"
+fi

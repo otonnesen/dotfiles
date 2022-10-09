@@ -14,11 +14,30 @@ MODE_CURSOR_SEARCH="#ff00ff steady underline"
 # Colors
 autoload -U colors && colors
 
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
+ORIG_PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1=$ORIG_PS1
 
-if [[ $IN_NIX_SHELL ]]; then
-    PS1="(nix-shell) $PS1"
-fi
+setopt prompt_subst
+show_virtualenv() {
+    if [[ $VIRTUAL_ENV ]]; then
+        echo "(venv) "
+    fi
+}
+PS1='$(show_virtualenv)'$PS1
+
+show_nix_shell() {
+    if [[ $IN_NIX_SHELL ]]; then
+        echo "($IN_NIX_SHELL) "
+    fi
+}
+PS1='$(show_nix_shell)'$PS1
+
+# autoload -Uz add-zsh-hook
+# add-zsh-hook precmd prompt
+
+# if [[ $IN_NIX_SHELL ]]; then
+#     PS1="(nix-shell) $PS1"
+# fi
 
 # Load aliases and shortcuts
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
@@ -31,6 +50,9 @@ setopt extended_history
 # Ensure history movement commands do not visit imported lines
 zle -N set-local-history	
 # zle set-local-history
+
+# Allow interactive comments
+setopt interactivecomments
 
 # "Infinite" history
 HISTFILE=~/.cache/zsh_history
@@ -71,6 +93,8 @@ export KEYTIMEOUT=1
 zstyle ":completion:*" format "Completing %d"
 # Enable completion menu unconditionally
 zstyle ":completion:*" menu select
+# Ignore globs (append additional globs with `|`, eg. `"*.egg-info|*.foo"`
+zstyle ":completion:*" ignored-patterns "*.egg-info"
 # Configure ls colours
 eval "$(dircolors -b)"
 # Use same colours as `ls` for the completion list
@@ -87,5 +111,9 @@ zstyle ":completion:*:kill:*" command "ps -u $USER -o pid,%cpu,tty,cputime,cmd"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+mig() {
+    vi database/database/migrations/versions/`alembic heads | awk '{print $1}'`*
+}
 
 eval "$(direnv hook zsh)"

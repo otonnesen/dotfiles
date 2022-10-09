@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# session=$1
+# dir=$2
+
+set -euo pipefail
+
+session=
+
+while getopts ":d:p:" arg; do
+	case "${arg}" in
+		d)
+			dir="${HOME}/panidigital/panidigital/${OPTARG}"
+			;;
+		p)
+			session="${OPTARG}"
+			;;
+    *)
+      echo "unrecognized flags"
+      exit 1
+      ;;
+	esac
+done
+
+if [ -z "${dir}" ]; then
+  echo "Must specify a directory"
+	exit 1
+fi
+
+if [ -z "${session}" ]; then
+	session="$(basename "${dir}")"
+    echo "No session name specified, defaulting to ${session}"
+fi
+
+if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | rg "^${session}$")" == "${session}" ]; then
+	tmux attach -t "${session}";
+	exit
+fi
+
+[ -d "${dir}" ] || mkdir "${dir}"
+
+[ -f "${dir}/backend/.envrc" ] || printf "export VIRTUAL_ENV=./venv\\nlayout python-venv python3.10" > "${dir}/backend/.envrc"
+
+tmux new -s "${session}" -d
+
+tmux rename-window -t "${session}" edit
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" test
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" run
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+tmux send-keys -t "${session}" 'docker-compose up'
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" db
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+tmux send-keys -t "${session}" 'p'
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" hasura
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend/hasura" ' && clear' C-m
+tmux send-keys -t "${session}" 'vi metadata/tables.yaml'
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" git
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+
+tmux select-window -t "${session}:0"
+
+tmux attach -t "${session}"

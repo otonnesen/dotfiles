@@ -15,12 +15,16 @@ super + shift + y
 	lock
 super + b
 	selectbg
+super + shift + s
+    flameshot gui
+super + p
+    firefox --new-window "about:logins"
 
 
 ## bspwm binds
 super + shift + Escape
 	prompt "Close Xorg?" "bspc quit"
-super + shift + q
+super + alt + shift + q
 	bspc node -{c,k}
 # Toggle floating
 super + shift + @space

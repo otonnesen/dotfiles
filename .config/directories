@@ -1,9 +1,5 @@
-h		~/
-d		~/Documents
-s		~/school
-t		~/school/textbooks
-D		~/Downloads
-dot		~/.dotfiles
 cf		~/.config
 sc		~/.local/bin
-car		~/Documents/career
+pb      ~/panidigital/backend
+pf      ~/panidigital/frontend
+pp      ~/panidigital/panidigital

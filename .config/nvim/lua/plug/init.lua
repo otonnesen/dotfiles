@@ -16,7 +16,14 @@ local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim")
 
-  use("axvr/org.vim") -- Dumb emacs org mode integration
+  -- use("axvr/org.vim") -- Dumb emacs org mode integration
+
+  use({
+    "nvim-orgmode/orgmode",
+    config = function()
+      require("orgmode").setup({})
+    end,
+  }) -- Potentially not-dumb emacs org mode integration?
 
   use("fatih/vim-go") -- Go utils
 
@@ -43,9 +50,6 @@ require("packer").startup(function()
   use("MaxMEllon/vim-jsx-pretty") -- JSX utils
 
   use("neovim/nvim-lspconfig") -- Neovim LSP defaults
-
-  -- Automatic LSP installer
-  use({ "williamboman/nvim-lsp-installer", requires = { "neovim/nvim-lspconfig" } })
 
   use("neovimhaskell/haskell-vim") -- Haskell utils
 
@@ -83,10 +87,10 @@ require("packer").startup(function()
   use({ "nvim-neorg/neorg", requires = { "nvim-lua/plenary.nvim" } })
 
   -- Treesitter text object plugin
-  use({
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    requires = { "nvim-treesitter/nvim-treesitter" },
-  })
+  -- use({
+  --   "nvim-treesitter/nvim-treesitter-textobjects",
+  --   requires = { "nvim-treesitter/nvim-treesitter" },
+  -- })
   -- Treesitter debugger
   use({ "nvim-treesitter/playground", requires = { "nvim-treesitter/nvim-treesitter" } })
 
@@ -102,4 +106,10 @@ require("packer").startup(function()
   use("nanotee/sqls.nvim")
 
   use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } })
+
+  use("norcalli/nvim-colorizer.lua")
+
+  use("williamboman/mason.nvim")
+
+  use("lewis6991/gitsigns.nvim")
 end)

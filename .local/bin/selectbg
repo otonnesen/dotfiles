@@ -1,6 +1,8 @@
 #!/bin/sh
 
-cp $HOME/Pictures/wallpapers/$(ls $HOME/Pictures/wallpapers | dmenu) $HOME/.config/wall.png
+monitor=$(echo "DP-2-1\neDP-1\nDP-2-2" | dmenu)
+
+cp $HOME/Pictures/wallpapers/$(ls $HOME/Pictures/wallpapers | dmenu) $HOME/.config/wall-$monitor.png
 
 setbg
 

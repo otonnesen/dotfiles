@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap("n", "Y", "y$", {})
 
 -- Git commands
 function ToggleGBlame()
-  local gblame = vim.fn.matchstr(vim.fn.bufname("%"), "/tmp/.*fugitiveblame")
+  local gblame = vim.fn.matchstr(vim.fn.bufname("%"), "^.*.fugitiveblame$")
   if gblame == "" then
     vim.cmd("Git blame")
   else
@@ -46,6 +46,8 @@ vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", {})
 -- Tab movement commands
 vim.api.nvim_set_keymap("n", "<C-n>", ":tabn<CR>", {})
 vim.api.nvim_set_keymap("n", "<C-p>", ":tabp<CR>", {})
+
+vim.api.nvim_set_keymap("n", "<C-w>t", ":tabnew %<CR>", {})
 
 -- Unmap F1
 vim.api.nvim_set_keymap("n", "<F1>", "<nop>", {})

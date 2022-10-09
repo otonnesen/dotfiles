@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+. config_monitors.home
+~/.config/bspwm/bspwmrc.home

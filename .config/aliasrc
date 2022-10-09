@@ -9,6 +9,12 @@ alias \
 	rgrep='rgrep --color=auto' \
 	diff='diff --color' \
 
+# fd
+alias fd='fdfind'
+
+# Dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
 # More ls aliases
 alias \
 	ll='ls -l' \
@@ -56,8 +62,14 @@ alias \
     dcd='dc down' \
     dcu='dc up' \
 
-alias python3=python3.7
+# Pani db
+alias p='psql -U postgres -w -h localhost -p 5432 -d panidigital'
 
-alias wi="nvim -c NeorgStart"
+# Pani alembic
+alias alembic='alembic -c database/database/migrations/alembic.ini -x pg_url="postgresql+psycopg2://postgres:password@localhost:5432/panidigital"'
+
+alias wi='nvim -c "Neorg workspace pani"'
 
 alias nixs="nix-shell --command zsh"
+
+alias pydirenv='echo "export VIRTUAL_ENV=./venv\nlayout python-venv python3.10" > ./.envrc'

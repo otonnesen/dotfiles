@@ -15,6 +15,11 @@ set.hlsearch = false
 -- Show `^M`s in dos files
 set.ffs = "unix"
 
+-- Full-screen statusline
+set.laststatus = 3
+
+-- set.autochdir  = true
+
 -- Python host prog
 vim.cmd([[
   let g:python3_host_prog = '/home/oliver/.config/nvim/host_prog/bin/python'
@@ -23,18 +28,22 @@ vim.cmd([[
 
 -- Default to all folds open
 set.foldlevel = 20
+-- Default to all folds closed
+-- set.foldlevel = 0
+set.foldmethod = "expr"
+set.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Colour scheme
 set.termguicolors = true
 -- vim.g.airline_theme = "base16_gruvbox_dark_hard"
-vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme gruvbox")
 set.background = "dark"
 
 -- Give backspace default functionality
 set.backspace = ""
 
 -- Write errors in linenumber column
-set.signcolumn = "number"
+set.signcolumn = "yes:1"
 
 vim.g.go_fmt_command = "goimports"
 
@@ -69,3 +78,4 @@ set.completeopt = "menu,menuone,noselect"
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 
+set.mouse=nil

@@ -2,5 +2,8 @@
 
 # Runs on X initialization
 
-compton &			# transparency
-sxhkd &				# keybinds
+compton &           # transparency
+sxhkd &             # keybinds
+xss-lock lock &     # lock-on-suspend
+flameshot &         # screenshots
+xmodmap ~/.xmodmap  # ctrl <-> caps
