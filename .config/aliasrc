@@ -73,3 +73,10 @@ alias wi='nvim -c "Neorg workspace pani"'
 alias nixs="nix-shell --command zsh"
 
 alias pydirenv='echo "export VIRTUAL_ENV=./venv\nlayout python-venv python3.10" > ./.envrc'
+
+copy_to_clipboard ()
+{
+  xsel -ib < "$1"
+}
+
+alias c=copy_to_clipboard
