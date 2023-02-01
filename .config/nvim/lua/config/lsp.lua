@@ -54,7 +54,7 @@ lspconfig.bashls.setup({})
 lspconfig.jsonls.setup({})
 lspconfig.terraformls.setup({})
 lspconfig.dockerls.setup({})
-lspconfig.elixirls.setup({})
+lspconfig.elmls.setup({})
 lspconfig.elixirls.setup({
   cmd = { "/home/oliver/.local/share/nvim/mason/bin/elixir-ls" },
 })
@@ -70,11 +70,13 @@ lspconfig.tsserver.setup({
     client.server_capabilities.document_range_formatting = false
   end,
 })
-lspconfig.sqls.setup({
-  on_attach = function(client, bufnr)
-    require("sqls").on_attach(client, bufnr)
-  end,
-})
+lspconfig.sqlls.setup({})
+-- lspconfig.sqls.setup({
+--   on_attach = function(client, bufnr)
+--     require("sqls").on_attach(client, bufnr)
+--   end,
+-- })
+lspconfig.rnix.setup({})
 
 vim.diagnostic.config({
   underline = true,
@@ -117,6 +119,6 @@ vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", 
 vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {
   noremap = true,
 })
-vim.api.nvim_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", {
+vim.api.nvim_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {
   noremap = true,
 })

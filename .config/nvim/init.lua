@@ -26,3 +26,4 @@ require("config.gitsigns")
 require("colours")
 
 require("bindings")
+require("config.neovide")
