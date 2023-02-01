@@ -32,7 +32,7 @@ if [ -z "${session}" ]; then
     echo "No session name specified, defaulting to ${session}"
 fi
 
-if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | rg "^${session}$")" == "${session}" ]; then
+if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | grep "^${session}$")" == "${session}" ]; then
 	tmux attach -t "${session}";
 	exit
 fi
@@ -63,7 +63,7 @@ tmux send-keys -t "${session}" 'p'
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" hasura
 tmux send-keys -t "${session}" 'cd ' "${dir}/backend/hasura" ' && clear' C-m
-tmux send-keys -t "${session}" 'vi metadata/tables.yaml'
+tmux send-keys -t "${session}" 'vi metadata/databases/default/tables/'
 
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" git
