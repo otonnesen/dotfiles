@@ -24,7 +24,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_LIB_HOME="$HOME/.local/lib"
 
 export CALCURSE_DEFAULT_DIR="$HOME/Documents/calendar.school"
-export CARGO_HOME="$HOME/.local/src/cargo"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export GOPATH="$HOME/.local/src/go"
 export INDENT_PROFILE="$XDG_CONFIG_HOME/indent.pro"
@@ -54,9 +53,6 @@ PATH="/usr/local/go/bin:$PATH"
 # Add GOPATH bin
 PATH="$GOPATH/bin:$PATH"
 
-# Add Cargo bin
-PATH="$CARGO_HOME/bin:$PATH"
-
 # Add Node bin
 PATH="$HOME/.local/src/node/bin:$PATH"
 
@@ -75,13 +71,12 @@ PATH="$HOME/.local/src/.ghcup/bin:$PATH"
 # Add Cabal bin
 PATH="$HOME/.cabal/bin:$PATH"
 
-# Cargo env
-. "/home/oliver/.local/src/cargo/env"
-
 # Poetry bin
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # Program defaults
 export LESS=-R
 
-if [ -e /home/oliver/.nix-profile/etc/profile.d/nix.sh ]; then . /home/oliver/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# Add fly.io bin
+export FLYCTL_INSTALL="/home/oliver/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
