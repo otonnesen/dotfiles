@@ -49,8 +49,6 @@ require("packer").startup(function()
 
   use("MaxMEllon/vim-jsx-pretty") -- JSX utils
 
-  use("neovim/nvim-lspconfig") -- Neovim LSP defaults
-
   use("neovimhaskell/haskell-vim") -- Haskell utils
 
   -- Misc. utils required for other plugins
@@ -109,9 +107,15 @@ require("packer").startup(function()
 
   use("norcalli/nvim-colorizer.lua")
 
-  use("williamboman/mason.nvim")
+  use({
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig", -- Neovim LSP defaults
+  })
 
   use("lewis6991/gitsigns.nvim")
 
-  -- use("m4xshen/autoclose.nvim")
+  use("m4xshen/autoclose.nvim")
+
+  use("alaviss/nim.nvim")
 end)

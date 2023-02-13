@@ -55,6 +55,7 @@ lspconfig.jsonls.setup({})
 lspconfig.terraformls.setup({})
 lspconfig.dockerls.setup({})
 lspconfig.elmls.setup({})
+lspconfig.nimls.setup({ single_file_support = true })
 lspconfig.elixirls.setup({
   cmd = { "/home/oliver/.local/share/nvim/mason/bin/elixir-ls" },
 })
