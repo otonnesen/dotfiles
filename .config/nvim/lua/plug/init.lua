@@ -74,7 +74,7 @@ require("packer").startup(function()
   use("tpope/vim-surround")
   use("tpope/vim-unimpaired")
 
-  use("vimwiki/vimwiki") -- Wiki plugin
+  -- use("vimwiki/vimwiki") -- Wiki plugin
 
   use({ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } }) -- Colorscheme
 

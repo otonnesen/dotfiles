@@ -37,7 +37,7 @@ if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | grep "^${sess
 	exit
 fi
 
-[ -d "${dir}" ] || mkdir "${dir}"
+# [ -d "${dir}" ] || mkdir "${dir}"
 
 [ -f "${dir}/backend/.envrc" ] || printf "export VIRTUAL_ENV=./venv\\nlayout python-venv python3.10" > "${dir}/backend/.envrc"
 
