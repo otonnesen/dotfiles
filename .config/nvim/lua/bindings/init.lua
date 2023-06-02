@@ -29,6 +29,7 @@ function ToggleGBlame()
     vim.cmd("q")
   end
 end
+
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua ToggleGBlame()<CR>", { noremap = true })
 
 -- Goyo for prose
@@ -53,3 +54,10 @@ vim.api.nvim_set_keymap("n", "<C-w>t", ":tabnew %<CR>", {})
 vim.api.nvim_set_keymap("n", "<F1>", "<nop>", {})
 vim.api.nvim_set_keymap("i", "<F1>", "<nop>", {})
 vim.api.nvim_set_keymap("v", "<F1>", "<nop>", {})
+
+vim.api.nvim_set_keymap(
+  "n",
+  "yoo",
+  [[<cmd>execute "set number! relativenumber! signcolumn=" . (&signcolumn == "no" ? "yes:1" : "no")<CR>]],
+  { noremap = true }
+)

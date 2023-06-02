@@ -28,7 +28,7 @@ require("neorg").setup({
     --     },
     --   },
     -- },
-    ["core.norg.dirman"] = {
+    ["core.dirman"] = {
       config = {
         workspaces = {
           default = "~/notes/neorg",
@@ -38,12 +38,12 @@ require("neorg").setup({
         index = "index.norg",
       },
     },
-    ["core.norg.completion"] = {
+    ["core.completion"] = {
       config = {
         engine = "nvim-cmp",
       },
     },
-    ["core.norg.qol.toc"] = {},
-    ["core.norg.journal"] = {},
+    ["core.qol.toc"] = {},
+    ["core.journal"] = {},
   },
 })

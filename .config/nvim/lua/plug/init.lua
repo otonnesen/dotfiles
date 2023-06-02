@@ -52,9 +52,12 @@ require("packer").startup(function()
   use("neovimhaskell/haskell-vim") -- Haskell utils
 
   -- Misc. utils required for other plugins
-  use({ "nvim-lua/popup.nvim", requires = {
-    "nvim-lua/plenary.nvim",
-  } })
+  use({
+    "nvim-lua/popup.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  })
 
   use("nvim-telescope/telescope.nvim") -- Fuzzy finder
 
@@ -118,4 +121,11 @@ require("packer").startup(function()
   use("m4xshen/autoclose.nvim")
 
   use("alaviss/nim.nvim")
+
+  use({
+    "jpalardy/vim-slime",
+    init = function()
+      vim.g.slime_target = "tmux"
+    end,
+  })
 end)
