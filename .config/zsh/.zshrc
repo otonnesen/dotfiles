@@ -17,6 +17,9 @@ autoload -U colors && colors
 ORIG_PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
 PS1=$ORIG_PS1
 
+# Disable right prompt string
+RPS1=
+
 setopt prompt_subst
 show_virtualenv() {
     if [[ $VIRTUAL_ENV ]]; then
@@ -63,7 +66,7 @@ SAVEHIST=999999999
 autoload -Uz compinit
 zmodload zsh/complist
 
-# Add Rust completions
+# Add completions
 fpath+="$ZDOTDIR/functions"
 
 # Add Nix completions
@@ -117,3 +120,13 @@ mig() {
 }
 
 eval "$(direnv hook zsh)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f "/home/oliver/.ghcup/env" ] && source "/home/oliver/.ghcup/env" # ghcup-env

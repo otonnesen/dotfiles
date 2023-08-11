@@ -30,3 +30,12 @@ use_flake() {
   watch_file flake.lock
   eval "$(nix print-dev-env --profile "$(direnv_layout_dir)/flake-profile")"
 }
+use_nvm() {
+  local node_version=$1
+
+  nvm_sh=$NVM_DIR/nvm.sh
+  if [[ -e $nvm_sh ]]; then
+    source $nvm_sh
+    nvm use $node_version
+  fi
+}
