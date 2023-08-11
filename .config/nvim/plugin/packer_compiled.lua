@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["autoclose.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
+    url = "https://github.com/m4xshen/autoclose.nvim"
+  },
   black = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/black",
@@ -89,10 +94,10 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["cmp-vsnip"] = {
+  ["copilot.vim"] = {
     loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
-    url = "https://github.com/hrsh7th/cmp-vsnip"
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -134,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/mason.nvim",
@@ -143,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neorg",
     url = "https://github.com/nvim-neorg/neorg"
+  },
+  ["nim.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nim.nvim",
+    url = "https://github.com/alaviss/nim.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -266,6 +281,11 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
   },
+  ["vim-slime"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-slime",
+    url = "https://github.com/jpalardy/vim-slime"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-surround",
@@ -276,20 +296,10 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
     url = "https://github.com/tpope/vim-unimpaired"
   },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-vsnip",
-    url = "https://github.com/hrsh7th/vim-vsnip"
-  },
   vimtex = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vimtex",
     url = "https://github.com/lervag/vimtex"
-  },
-  vimwiki = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vimwiki",
-    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
