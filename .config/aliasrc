@@ -9,9 +9,6 @@ alias \
 	rgrep='rgrep --color=auto' \
 	diff='diff --color' \
 
-# fd
-alias fd='fdfind'
-
 # Dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
@@ -27,6 +24,7 @@ alias \
 
 # Battery
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
+alias batstat='cat /sys/class/power_supply/BAT0/status'
 
 # Set default directory for calcurse
 alias calcurse='calcurse -D $CALCURSE_DEFAULT_DIR'
@@ -58,7 +56,7 @@ alias \
 
 # Docker stuff
 alias \
-    dc='docker-compose' \
+    dc='docker compose' \
     dcd='dc down' \
     dcu='dc up' \
 
