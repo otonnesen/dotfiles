@@ -7,13 +7,7 @@ setbg
 launch_polybar
 xrdb ~/.Xresources	# reload X resources for some reason
 
-if [[ $PRIMARY_MONITOR == 'DP-2-1' ]]; then
-    bspc monitor DP-2-1 -d I II III IV V VI VII VIII IX X
-    bspc monitor eDP-1 -r  # Disable logical laptop monitor
-	bspc monitor -f DP-2-1
-else
-    bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
-fi
+bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          24

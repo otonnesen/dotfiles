@@ -1,8 +1,8 @@
 #!/bin/sh
 
-monitor=$(echo "DP-2-1\neDP-1\nDP-2-2" | dmenu)
+monitor=$(printf "DP-1\neDP-1\nHDMI-2" | dmenu)
 
-cp $HOME/Pictures/wallpapers/$(ls $HOME/Pictures/wallpapers | dmenu) $HOME/.config/wall-$monitor.png
+cp "${HOME}/Pictures/wallpapers/$(find "${HOME}/Pictures/wallpapers" -type f -exec basename '{}' \; | dmenu)" "${HOME}/.config/wall-${monitor}.png"
 
 setbg
 

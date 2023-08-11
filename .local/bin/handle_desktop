@@ -7,18 +7,18 @@ num=$3
 node=$4
 monitor=$(bspc query -M -m)
 eDP1=$(bspc query -M -m eDP1)
-DP2_1=$(bspc query -M -m DP2-1)
-DP2_2=$(bspc query -M -m DP2-2)
+DP_1=$(bspc query -M -m DP-1)
+HDMI_2=$(bspc query -M -m HDMI-2)
 
 if [[ $monitor = $eDP1 ]]; then
 	pref=""
 	refocus="eDP1"
-elif [[ $monitor = $DP2_1 ]]; then
+elif [[ $monitor = $DP_1 ]]; then
 	pref="X"
-	refocus="DP2-1"
-elif [[ $monitor = $DP2_2 ]]; then
+	refocus="DP-1"
+elif [[ $monitor = $HDMI_2 ]]; then
 	pref="XX"
-	refocus="DP2-2"
+	refocus="HDMI-2"
 fi
 
 if [[ $num = "^1" ]]; then

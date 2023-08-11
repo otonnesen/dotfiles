@@ -1,2 +1,2 @@
 #!/bin/bash
-xwallpaper --output eDP-1 --zoom /home/oliver/.config/wall-eDP-1.png --output DP-2-1 --zoom /home/oliver/.config/wall-DP-2-1.png --output DP-2-2 --zoom /home/oliver/.config/wall-DP-2-2.png
+xwallpaper --output eDP-1 --zoom /home/oliver/.config/wall-eDP-1.png --output DP-1 --zoom /home/oliver/.config/wall-DP-1.png --output HDMI-2 --zoom /home/oliver/.config/wall-HDMI-2.png

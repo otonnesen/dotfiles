@@ -3,5 +3,5 @@
 set -euxo pipefail
 
 
-xrandr --output DP-2-1 --off
-xrandr --output DP-2-1 --auto
+xrandr --output DP-1 --off
+xrandr --output DP-1 --auto
