@@ -89,6 +89,8 @@ super + s
 	$TERMINAL -e alsamixer
 XF86AudioMute
 	amixer sset Master toggle
+XF86AudioMicMute
+    amixer sset Capture toggle
 XF86Audio{Raise,Lower}Volume
 	amixer sset Master 5%{+,-}
 
