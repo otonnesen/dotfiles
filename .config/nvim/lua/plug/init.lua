@@ -128,4 +128,6 @@ require("packer").startup(function()
       vim.g.slime_target = "tmux"
     end,
   })
+
+  use("github/copilot.vim")
 end)
