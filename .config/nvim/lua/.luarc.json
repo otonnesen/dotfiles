@@ -61,6 +61,8 @@
         "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty/after",
         "/home/oliver/.local/share/nvim/site/pack/packer/start/vimtex/after",
         "/home/oliver/.config/nvim/after",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library",
         "${3rd}/luv/library"
     ],
     "workspace.checkThirdParty": false

@@ -49,14 +49,26 @@ lspconfig.pyright.setup({
 })
 lspconfig.gopls.setup({})
 lspconfig.rust_analyzer.setup({})
-lspconfig.ccls.setup({})
+lspconfig.ccls.setup({
+  init_options = {
+    cache = {
+      directory = ".ccls-cache",
+    },
+  },
+})
 lspconfig.bashls.setup({})
 lspconfig.jsonls.setup({})
+lspconfig.html.setup({})
 lspconfig.terraformls.setup({})
 lspconfig.dockerls.setup({})
 lspconfig.elmls.setup({})
 lspconfig.svelte.setup({})
-lspconfig.eslint.setup({})
+lspconfig.eslint.setup({
+  on_attach = function(client)
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
+  end,
+})
 lspconfig.nimls.setup({ single_file_support = true })
 lspconfig.elixirls.setup({
   cmd = { "/home/oliver/.local/share/nvim/mason/bin/elixir-ls" },
@@ -67,11 +79,19 @@ lspconfig.hls.setup({
     client.server_capabilities.document_range_formatting = false
   end,
 })
+-- require("typescript-tools").setup({})
 lspconfig.tsserver.setup({
   on_attach = function(client)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
   end,
+})
+lspconfig.graphql.setup({
+  -- Kind of a huge hack but I cannot figure out how to get raw vim.lsp.start()
+  -- to work, and don't know how add a new server to lspconfig ¯\_(ツ)_/¯.
+  root_dir = util.root_pattern("relay.config.json"),
+  cmd = { "npx", "relay-compiler", "lsp" },
+  filetypes = { "graphql", "javascript", "typescript", "typescriptreact", "javascriptreact" },
 })
 lspconfig.sqlls.setup({})
 -- lspconfig.sqls.setup({
@@ -79,6 +99,7 @@ lspconfig.sqlls.setup({})
 --     require("sqls").on_attach(client, bufnr)
 --   end,
 -- })
+lspconfig.postgres_lsp.setup({})
 lspconfig.rnix.setup({})
 lspconfig.ruff_lsp.setup({})
 lspconfig.jqls.setup({})
@@ -109,6 +130,7 @@ lspconfig.lua_ls.setup({
   },
 })
 -- lspconfig.yamlls.setup({})
+lspconfig.ocamllsp.setup({})
 
 vim.diagnostic.config({
   underline = true,

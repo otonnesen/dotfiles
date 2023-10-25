@@ -20,7 +20,7 @@ require("config.mason")
 require("config.lsp")
 require("config.gruvbox")
 require("config.gitsigns")
-require("config.slime")
+-- require("config.slime")
 
 -- This is last so it takes precedence over any config done by plugins. I'm
 -- pretty sure the italic operator highlight is probably done by treesitter, so

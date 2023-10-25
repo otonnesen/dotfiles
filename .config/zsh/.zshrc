@@ -35,6 +35,20 @@ show_nix_shell() {
 }
 PS1='$(show_nix_shell)'$PS1
 
+show_fnm_version() {
+    if [[ $DIRENV_USING_FNM ]]; then
+        echo "($(fnm current)) "
+    fi
+}
+PS1='$(show_fnm_version)'$PS1
+
+show_asdf() {
+    if [[ $IN_ASDF ]]; then
+        echo "(asdf) "
+    fi
+}
+PS1='$(show_asdf)'$PS1
+
 # autoload -Uz add-zsh-hook
 # add-zsh-hook precmd prompt
 
@@ -72,6 +86,9 @@ fpath+="$ZDOTDIR/functions"
 # Add Nix completions
 source $ZDOTDIR/plugins/nix-zsh-completions/nix-zsh-completions.plugin.zsh
 fpath=($ZDOTDIR/plugins/nix-zsh-completions $fpath)
+
+. "${HOME}/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
 
 compinit
 
@@ -125,8 +142,15 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 [ -f "/home/oliver/.ghcup/env" ] && source "/home/oliver/.ghcup/env" # ghcup-env
+
+export PATH="/home/oliver/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+# awscli completions
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+# opam configuration
+test -r /home/oliver/.opam/opam-init/init.zsh && . /home/oliver/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

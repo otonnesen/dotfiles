@@ -19,8 +19,16 @@ null_ls.setup({
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.json_tool,
-    null_ls.builtins.formatting.sqlformat.with({
-      extra_args = { "-k", '"lower"', "--reindent", "--comma_first" },
+    null_ls.builtins.formatting.ocamlformat,
+    null_ls.builtins.formatting.pg_format.with({
+      extra_args = {
+        "--type-case",
+        "1",
+        "--keyword-case",
+        "1",
+        "--comma-start",
+        "--wrap-comment",
+      },
     }),
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.fourmolu,

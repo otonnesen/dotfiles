@@ -50,14 +50,26 @@ vim.api.nvim_set_keymap("n", "<C-p>", ":tabp<CR>", {})
 
 vim.api.nvim_set_keymap("n", "<C-w>t", ":tabnew %<CR>", {})
 
--- Unmap F1
+-- Unmap F1 for help
 vim.api.nvim_set_keymap("n", "<F1>", "<nop>", {})
 vim.api.nvim_set_keymap("i", "<F1>", "<nop>", {})
 vim.api.nvim_set_keymap("v", "<F1>", "<nop>", {})
 
+-- NvimTree
+vim.api.nvim_set_keymap("n", "<F1>", [[<cmd>NvimTreeToggle<CR>]], { noremap = true })
+
+function ToggleStuff()
+  vim.cmd("execute 'set number! relativenumber! signcolumn=' . (&signcolumn == 'no' ? 'yes:1' : 'no')")
+  if vim.diagnostic.is_disabled() then
+    vim.diagnostic.enable()
+  else
+    vim.diagnostic.disable()
+  end
+end
+
 vim.api.nvim_set_keymap(
   "n",
   "yoo",
-  [[<cmd>execute "set number! relativenumber! signcolumn=" . (&signcolumn == "no" ? "yes:1" : "no")<CR>]],
+  [[<cmd>lua ToggleStuff()<CR>]],
   { noremap = true }
 )

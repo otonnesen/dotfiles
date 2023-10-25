@@ -23,7 +23,7 @@ require("packer").startup(function()
     config = function()
       require("orgmode").setup({})
     end,
-  }) -- Potentially not-dumb emacs org mode integration?
+  })                  -- Potentially not-dumb emacs org mode integration?
 
   use("fatih/vim-go") -- Go utils
 
@@ -37,19 +37,19 @@ require("packer").startup(function()
   -- Extra snippets
   use("rafamadriz/friendly-snippets")
 
-  use("jrozner/vim-antlr") -- ANTLR
+  use("jrozner/vim-antlr")          -- ANTLR
 
-  use("junegunn/goyo.vim") -- Reader mode
+  use("junegunn/goyo.vim")          -- Reader mode
 
   use("leafgarland/typescript-vim") -- TS utils
 
-  use("lervag/vimtex") -- LaTeX utils
+  use("lervag/vimtex")              -- LaTeX utils
 
-  use("majutsushi/tagbar") -- Tag browswer
+  use("majutsushi/tagbar")          -- Tag browswer
 
-  use("MaxMEllon/vim-jsx-pretty") -- JSX utils
+  use("MaxMEllon/vim-jsx-pretty")   -- JSX utils
 
-  use("neovimhaskell/haskell-vim") -- Haskell utils
+  use("neovimhaskell/haskell-vim")  -- Haskell utils
 
   -- Misc. utils required for other plugins
   use({
@@ -59,13 +59,13 @@ require("packer").startup(function()
     },
   })
 
-  use("nvim-telescope/telescope.nvim") -- Fuzzy finder
+  use("nvim-telescope/telescope.nvim")   -- Fuzzy finder
 
   use("nvim-treesitter/nvim-treesitter") -- Tree-sitter nvim interface
 
-  use("psf/black") -- Python formatting
+  use("psf/black")                       -- Python formatting
 
-  use("rust-lang/rust.vim") -- Rust utils
+  use("rust-lang/rust.vim")              -- Rust utils
 
   -- Python import sorting
   use("stsewd/isort.nvim") --, { "do": ":UpdateRemoteuseins" }
@@ -122,12 +122,17 @@ require("packer").startup(function()
 
   use("alaviss/nim.nvim")
 
-  use({
-    "jpalardy/vim-slime",
-    init = function()
-      vim.g.slime_target = "tmux"
-    end,
-  })
+  -- use({
+  --   "jpalardy/vim-slime",
+  --   init = function()
+  --     vim.g.slime_target = "tmux"
+  --   end,
+  -- })
 
   use("github/copilot.vim")
+
+  -- use({
+  --   "pmizio/typescript-tools.nvim",
+  --   requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  -- })
 end)
