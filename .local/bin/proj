@@ -1,17 +1,12 @@
 #!/bin/bash
 
-# session=$1
-# dir=$2
-
 set -euo pipefail
 
+dir="${HOME}/panidigital/panidigital/${1}"
 session=
 
-while getopts ":d:p:" arg; do
+while getopts ":p:" arg; do
 	case "${arg}" in
-		d)
-			dir="${HOME}/panidigital/panidigital/${OPTARG}"
-			;;
 		p)
 			session="${OPTARG}"
 			;;
@@ -32,8 +27,8 @@ if [ -z "${session}" ]; then
     echo "No session name specified, defaulting to ${session}"
 fi
 
-[ -f "${dir}/backend/.envrc" ] || printf "export VIRTUAL_ENV=./venv\\nlayout python-venv python3.11" > "${dir}/backend/.envrc"
-[ -f "${dir}/frontend/.envrc" ] || printf "use nvm 16" > "${dir}/frontend/.envrc"
+[ -f "${dir}/backend/.envrc" ] || ln -s "${HOME}/panidigital/panidigital/backend.envrc" "${dir}/backend/.envrc"
+[ -f "${dir}/frontend/.envrc" ] || ln -s "${HOME}/panidigital/panidigital/frontend.envrc" "${dir}/frontend/.envrc"
 
 if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | grep "^${session}$")" == "${session}" ]; then
 	tmux attach -t "${session}";
@@ -55,6 +50,9 @@ tmux new-window -t "${session}"
 tmux rename-window -t "${session}" run
 tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
 tmux send-keys -t "${session}" 'docker compose up'
+tmux split-window -t "${session}"
+tmux send-keys -t "${session}" 'cd ' "${dir}/frontend" ' && clear' C-m
+tmux send-keys -t "${session}" 'npm run start'
 
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" db
@@ -69,6 +67,10 @@ tmux send-keys -t "${session}" 'vi metadata/databases/default/tables/'
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" git
 tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" frontend
+tmux send-keys -t "${session}" 'cd ' "${dir}/frontend" ' && clear' C-m
 
 tmux select-window -t "${session}:0"
 

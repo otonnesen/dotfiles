@@ -1,0 +1,7 @@
+#compdef _aion_proj aion-proj
+
+_aion_proj() {
+	local -a completions
+	completions=( $(tmux list-sessions 2>/dev/null | sed 's/:.*//g') )
+    _arguments '1:directory:_path_files -W ~/panidigital/aion -/' '-p:tmux sessions:( $completions )'
+}
