@@ -7,27 +7,16 @@ require("neorg").setup({
         -- neorg_leader = "<Leader>n",
       },
     },
-    -- ["core.norg.concealer"] = {
-    --   config = {
-    --     icons = {
-    --       todo = {
-    --         enabled = true,
-    --         done = {
-    --           enabled = true,
-    --           icon = "✓",
-    --         },
-    --         pending = {
-    --           enabled = true,
-    --           icon = "⭮",
-    --         },
-    --         undone = {
-    --           enabled = true,
-    --           icon = "⨯",
-    --         },
-    --       },
-    --     },
-    --   },
-    -- },
+    ["core.integrations.treesitter"] = {
+      config = {
+        enable = true,
+      },
+    },
+    ["core.concealer"] = {
+      config = {
+        enable = true,
+      },
+    },
     ["core.dirman"] = {
       config = {
         workspaces = {
@@ -38,12 +27,13 @@ require("neorg").setup({
         index = "index.norg",
       },
     },
-    ["core.completion"] = {
-      config = {
-        engine = "nvim-cmp",
-      },
-    },
+    -- ["core.completion"] = {
+    --   config = {
+    --     engine = "nvim-cmp",
+    --   },
+    -- },
     ["core.qol.toc"] = {},
     ["core.journal"] = {},
+    ["core.looking-glass"] = {},
   },
 })

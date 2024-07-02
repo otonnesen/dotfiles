@@ -51,6 +51,14 @@ super + u
 		then launch_scratchpad;\
 		else (bspc node $id --flag hidden; bspc node -f $id);\
 	fi
+# Reset scratchpad (useful when launching X twice ends up in corrupt
+# /tmp/scratchid file)
+super + shift + u
+    bspc query --nodes \
+    | xargs -I'{}' bspc query -T -n {} \
+    | jq 'if .client.className == "scratchpad" then .id else empty end' \
+    | xargs -I'{}' bspc node {} -k \
+    && : > /tmp/scratchid
 # If floating, move window, if tiled focus node in given direction
 super + {_,shift + }{h,j,k,l}
 	handle_movement {f,s} {west,south,north,east} $(bspc query -N -n)

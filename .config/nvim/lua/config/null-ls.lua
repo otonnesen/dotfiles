@@ -16,10 +16,15 @@ null_ls.setup({
         "AutoPreferDouble",
       },
     }),
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.json_tool,
+
+    -- I don't use these anymore
+    -- null_ls.builtins.formatting.black,
+    -- null_ls.builtins.formatting.isort,
+
+    -- Broken
+    -- null_ls.builtins.formatting.json_tool,
     null_ls.builtins.formatting.ocamlformat,
+    null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.pg_format.with({
       extra_args = {
         "--type-case",
@@ -31,9 +36,14 @@ null_ls.setup({
       },
     }),
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.fourmolu,
+
+    -- Broken
+    -- null_ls.builtins.formatting.fourmolu,
+
     -- null_ls.builtins.formatting.elm_format,
   },
 })
 
-vim.api.nvim_set_keymap("n", "<F3>", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", {})
+vim.keymap.set("n", "<F3>", function()
+  vim.lsp.buf.format({ async = true })
+end, { noremap = true, silent = true })

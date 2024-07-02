@@ -23,33 +23,36 @@ require("packer").startup(function()
     config = function()
       require("orgmode").setup({})
     end,
-  })                  -- Potentially not-dumb emacs org mode integration?
+  }) -- Potentially not-dumb emacs org mode integration?
 
-  use("fatih/vim-go") -- Go utils
+  -- use("fatih/vim-go") -- Go utils
+  use("ray-x/go.nvim")
+  use("ray-x/guihua.lua")
+  require("go").setup()
 
   -- Completion
   use("hrsh7th/cmp-buffer")
   use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-vsnip")
+  -- use("hrsh7th/cmp-vsnip")
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/vim-vsnip")
 
   -- Extra snippets
   use("rafamadriz/friendly-snippets")
 
-  use("jrozner/vim-antlr")          -- ANTLR
+  use("jrozner/vim-antlr") -- ANTLR
 
-  use("junegunn/goyo.vim")          -- Reader mode
+  use("junegunn/goyo.vim") -- Reader mode
 
   use("leafgarland/typescript-vim") -- TS utils
 
-  use("lervag/vimtex")              -- LaTeX utils
+  use("lervag/vimtex") -- LaTeX utils
 
-  use("majutsushi/tagbar")          -- Tag browswer
+  use("majutsushi/tagbar") -- Tag browswer
 
-  use("MaxMEllon/vim-jsx-pretty")   -- JSX utils
+  use("MaxMEllon/vim-jsx-pretty") -- JSX utils
 
-  use("neovimhaskell/haskell-vim")  -- Haskell utils
+  use("neovimhaskell/haskell-vim") -- Haskell utils
 
   -- Misc. utils required for other plugins
   use({
@@ -59,13 +62,13 @@ require("packer").startup(function()
     },
   })
 
-  use("nvim-telescope/telescope.nvim")   -- Fuzzy finder
+  use("nvim-telescope/telescope.nvim") -- Fuzzy finder
 
   use("nvim-treesitter/nvim-treesitter") -- Tree-sitter nvim interface
 
-  use("psf/black")                       -- Python formatting
+  use("psf/black") -- Python formatting
 
-  use("rust-lang/rust.vim")              -- Rust utils
+  use("rust-lang/rust.vim") -- Rust utils
 
   -- Python import sorting
   use("stsewd/isort.nvim") --, { "do": ":UpdateRemoteuseins" }
@@ -85,7 +88,16 @@ require("packer").startup(function()
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
   -- Norg mode
-  use({ "nvim-neorg/neorg", requires = { "nvim-lua/plenary.nvim" } })
+  use({
+    "nvim-neorg/neorg",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neorg/lua-utils.nvim",
+      "nvim-neotest/nvim-nio",
+      "MunifTanjim/nui.nvim",
+      "pysan3/pathlib.nvim",
+    },
+  })
 
   -- Treesitter text object plugin
   -- use({
@@ -101,8 +113,9 @@ require("packer").startup(function()
   -- })
 
   use("mfussenegger/nvim-dap")
+  use("mfussenegger/nvim-dap-python")
 
-  use("jose-elias-alvarez/null-ls.nvim")
+  use({ "nvimtools/none-ls.nvim", requires = { "nvimtools/none-ls-extras.nvim" } })
 
   use("nanotee/sqls.nvim")
 
@@ -135,4 +148,25 @@ require("packer").startup(function()
   --   "pmizio/typescript-tools.nvim",
   --   requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   -- })
+
+  use({
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  })
+
+  use("nvim-neotest/neotest-python")
+  use("nvim-neotest/neotest-plenary")
+  use("nvim-neotest/neotest-vim-test")
+
+  use({
+    "andythigpen/nvim-coverage",
+    requires = "nvim-lua/plenary.nvim",
+  })
+
+  use("hedyhli/outline.nvim")
 end)

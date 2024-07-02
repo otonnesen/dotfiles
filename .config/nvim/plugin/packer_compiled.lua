@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?/init.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1692716794/lib/lua/5.1/?.so"
+local package_path_str = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   ["autoclose.nvim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
@@ -94,11 +99,6 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["cmp-vsnip"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
-    url = "https://github.com/hrsh7th/cmp-vsnip"
-  },
   ["copilot.vim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/copilot.vim",
@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["go.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/go.nvim",
+    url = "https://github.com/ray-x/go.nvim"
+  },
   ["goyo.vim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/goyo.vim",
@@ -124,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/npxbr/gruvbox.nvim"
   },
+  ["guihua.lua"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/guihua.lua",
+    url = "https://github.com/ray-x/guihua.lua"
+  },
   ["haskell-vim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/haskell-vim",
@@ -133,6 +143,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/isort.nvim",
     url = "https://github.com/stsewd/isort.nvim"
+  },
+  ["lua-utils.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/lua-utils.nvim",
+    url = "https://github.com/nvim-neorg/lua-utils.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -159,15 +174,45 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neorg",
     url = "https://github.com/nvim-neorg/neorg"
   },
+  neotest = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-plenary"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neotest-plenary",
+    url = "https://github.com/nvim-neotest/neotest-plenary"
+  },
+  ["neotest-python"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neotest-python",
+    url = "https://github.com/nvim-neotest/neotest-python"
+  },
+  ["neotest-vim-test"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neotest-vim-test",
+    url = "https://github.com/nvim-neotest/neotest-vim-test"
+  },
   ["nim.nvim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nim.nvim",
     url = "https://github.com/alaviss/nim.nvim"
   },
-  ["null-ls.nvim"] = {
+  ["none-ls-extras.nvim"] = {
     loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/none-ls-extras.nvim",
+    url = "https://github.com/nvimtools/none-ls-extras.nvim"
+  },
+  ["none-ls.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/none-ls.nvim",
+    url = "https://github.com/nvimtools/none-ls.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -179,15 +224,30 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
+  ["nvim-coverage"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-coverage",
+    url = "https://github.com/andythigpen/nvim-coverage"
+  },
   ["nvim-dap"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-python"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-dap-python",
+    url = "https://github.com/mfussenegger/nvim-dap-python"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -211,10 +271,20 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/orgmode",
     url = "https://github.com/nvim-orgmode/orgmode"
   },
+  ["outline.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/outline.nvim",
+    url = "https://github.com/hedyhli/outline.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["pathlib.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/pathlib.nvim",
+    url = "https://github.com/pysan3/pathlib.nvim"
   },
   playground = {
     loaded = true,
@@ -271,11 +341,6 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
-  ["vim-go"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-go",
-    url = "https://github.com/fatih/vim-go"
-  },
   ["vim-jsx-pretty"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
@@ -285,11 +350,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
-  },
-  ["vim-slime"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/vim-slime",
-    url = "https://github.com/jpalardy/vim-slime"
   },
   ["vim-surround"] = {
     loaded = true,

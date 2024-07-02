@@ -133,7 +133,19 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$HOME/.poetry/bin:$PATH"
 
 mig() {
-    vi database/database/migrations/versions/`alembic heads | awk '{print $1}'`*
+    vi migrations/versions/`alembic heads | awk '{print $1}'`*
+}
+
+migs() {
+    vi -q <(cat \
+        <(alembic heads | awk '{print $1}') \
+        <(alembic history \
+            | head -n-1 \
+            | grep '\->' \
+            | awk '{print $1}') \
+            | xargs -I'{}' bash -c 'ls migrations/versions/{}*' \
+            | sed -E 's~/([^_]*_)([^/]*).py$~/\1\2.py:1:1: \2~' \
+    )
 }
 
 eval "$(direnv hook zsh)"
@@ -154,3 +166,12 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # opam configuration
 test -r /home/oliver/.opam/opam-init/init.zsh && . /home/oliver/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. "$HOME/.cargo/env"
+
+# pnpm
+export PNPM_HOME="/home/oliver/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

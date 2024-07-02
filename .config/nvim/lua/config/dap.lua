@@ -1,7 +1,7 @@
 local dap = require('dap')
 dap.adapters.python = {
   type = 'executable';
-  command = '/home/oliver/panidigital/backend/sso/venv/bin/python';
+  command = 'python';
   args = { '-m', 'debugpy.adapter' };
 }
 

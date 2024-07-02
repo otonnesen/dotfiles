@@ -1,6 +1,42 @@
 local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
+  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set("n", "g<C-k>", vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set("n", "<space>wl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  vim.keymap.set("n", "<space>f", function()
+    vim.lsp.buf.format({ async = true })
+  end, bufopts)
+  vim.keymap.set("n", "<F3>", function()
+    vim.lsp.buf.format({ async = true })
+  end, bufopts)
+end
+
 local root_files = {
   "pyproject.toml",
   -- 'setup.py',
@@ -42,13 +78,37 @@ lspconfig.pyright.setup({
           reportUnusedFunction = "information",
           -- reportUnusedImport = "information",
           -- reportUnusedVariable = "information",
+          reportMissingParameterType = "warning",
         },
       },
     },
   },
 })
-lspconfig.gopls.setup({})
-lspconfig.rust_analyzer.setup({})
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+        fillreturns = true,
+        unparam = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+      codelenses = {
+        generate = true,
+        gc_details = true,
+        tidy = true,
+        upgrade_dependency = true,
+        test = true,
+      },
+    },
+  },
+})
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+})
 lspconfig.ccls.setup({
   init_options = {
     cache = {
@@ -56,35 +116,59 @@ lspconfig.ccls.setup({
     },
   },
 })
-lspconfig.bashls.setup({})
+lspconfig.bashls.setup({
+  on_attach = on_attach,
+})
 lspconfig.jsonls.setup({})
 lspconfig.html.setup({})
-lspconfig.terraformls.setup({})
-lspconfig.dockerls.setup({})
-lspconfig.elmls.setup({})
-lspconfig.svelte.setup({})
+lspconfig.tailwindcss.setup({})
+lspconfig.htmx.setup({
+  on_attach = on_attach,
+  filetypes = { "html", "gohtmltmpl" },
+})
+lspconfig.terraformls.setup({
+  on_attach = on_attach,
+})
+lspconfig.dockerls.setup({
+  on_attach = on_attach,
+})
+lspconfig.elmls.setup({
+  on_attach = on_attach,
+})
+lspconfig.svelte.setup({
+  on_attach = on_attach,
+})
 lspconfig.eslint.setup({
   on_attach = function(client)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
   end,
 })
-lspconfig.nimls.setup({ single_file_support = true })
+lspconfig.nimls.setup({
+  on_attach = on_attach,
+  single_file_support = true,
+})
 lspconfig.elixirls.setup({
+  on_attach = on_attach,
   cmd = { "/home/oliver/.local/share/nvim/mason/bin/elixir-ls" },
 })
 lspconfig.hls.setup({
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
+    on_attach(client, bufnr)
   end,
 })
 -- require("typescript-tools").setup({})
 lspconfig.tsserver.setup({
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
+    on_attach(client, bufnr)
   end,
+})
+lspconfig.tsp_server.setup({
+  on_attach = on_attach,
 })
 lspconfig.graphql.setup({
   -- Kind of a huge hack but I cannot figure out how to get raw vim.lsp.start()
@@ -99,14 +183,22 @@ lspconfig.sqlls.setup({})
 --     require("sqls").on_attach(client, bufnr)
 --   end,
 -- })
-lspconfig.postgres_lsp.setup({})
+-- lspconfig.postgres_lsp.setup({})
 lspconfig.rnix.setup({})
-lspconfig.ruff_lsp.setup({})
+lspconfig.ruff_lsp.setup({
+  on_attach = on_attach,
+  init_options = {
+    settings = {
+      args = {},
+    },
+  },
+})
 lspconfig.jqls.setup({})
 lspconfig.lua_ls.setup({
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
+    on_attach(client, bufnr)
   end,
   settings = {
     Lua = {
@@ -129,14 +221,18 @@ lspconfig.lua_ls.setup({
     },
   },
 })
--- lspconfig.yamlls.setup({})
-lspconfig.ocamllsp.setup({})
+lspconfig.yamlls.setup({ on_attach = on_attach })
+lspconfig.ocamllsp.setup({
+  on_attach = on_attach,
+})
+lspconfig.taplo.setup({})
+-- lspconfig.nginx_language_server.setup({})
 
 vim.diagnostic.config({
   underline = true,
 })
 
-function filter(arr, func)
+local filter = function(arr, func)
   -- Filter in place
   -- https://stackoverflow.com/questions/49709998/how-to-filter-a-lua-array-inplace
   local new_index = 1
@@ -175,42 +271,44 @@ end
 -- 	custom_on_publish_diagnostics, {})
 
 -- LSP binds
-vim.api.nvim_set_keymap(
-  "n",
-  "[g",
-  "<cmd>lua vim.diagnostic.goto_prev()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "]g",
-  "<cmd>lua vim.diagnostic.goto_next()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "gd",
-  "<cmd>lua vim.lsp.buf.definition()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "gh",
-  "<cmd>lua vim.lsp.buf.hover()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "gr",
-  "<cmd>lua vim.lsp.buf.references()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {
-  noremap = true,
-})
-vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {
-  noremap = true,
-})
-vim.api.nvim_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {
-  noremap = true,
-})
+-- BACKUP
+-- local bufopts = { noremap = true, silent = true }
+-- vim.keymap.set(
+--   "n",
+--   "[g",
+--   "<cmd>lua vim.diagnostic.goto_prev()<CR>",
+--   { noremap = true, silent = true }
+-- )
+-- vim.keymap.set(
+--   "n",
+--   "]g",
+--   "<cmd>lua vim.diagnostic.goto_next()<CR>",
+--   { noremap = true, silent = true }
+-- )
+-- vim.keymap.set(
+--   "n",
+--   "gd",
+--   "<cmd>lua vim.lsp.buf.definition()<CR>",
+--   { noremap = true, silent = true }
+-- )
+-- vim.keymap.set(
+--   "n",
+--   "gh",
+--   "<cmd>lua vim.lsp.buf.hover()<CR>",
+--   { noremap = true, silent = true }
+-- )
+-- vim.keymap.set(
+--   "n",
+--   "gr",
+--   "<cmd>lua vim.lsp.buf.references()<CR>",
+--   { noremap = true, silent = true }
+-- )
+-- vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {
+--   noremap = true,
+-- })
+-- vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {
+--   noremap = true,
+-- })
+-- vim.keymap.set("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {
+--   noremap = true,
+-- })

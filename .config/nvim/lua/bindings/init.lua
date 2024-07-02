@@ -36,7 +36,10 @@ vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua ToggleGBlame()<CR>", { norem
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Goyo | set linebreak<CR>", {})
 
 -- Tagbar
-vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Tagbar<CR>", {})
+-- vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Tagbar<CR>", {})
+
+-- Outline
+vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Outline!<CR>", {})
 
 -- Shorter movement commands
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", {})
@@ -57,9 +60,11 @@ vim.api.nvim_set_keymap("v", "<F1>", "<nop>", {})
 
 -- NvimTree
 vim.api.nvim_set_keymap("n", "<F1>", [[<cmd>NvimTreeToggle<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "<F2>", [[<cmd>NvimTreeFindFileToggle<CR>]], { noremap = true })
 
 function ToggleStuff()
   vim.cmd("execute 'set number! relativenumber! signcolumn=' . (&signcolumn == 'no' ? 'yes:1' : 'no')")
+  vim.cmd("execute 'Gitsigns toggle_current_line_blame'")
   if vim.diagnostic.is_disabled() then
     vim.diagnostic.enable()
   else
@@ -71,5 +76,21 @@ vim.api.nvim_set_keymap(
   "n",
   "yoo",
   [[<cmd>lua ToggleStuff()<CR>]],
+  { noremap = true }
+)
+
+function ToggleFormatExpr()
+  local formatexpr = vim.api.nvim_buf_get_option(0, "formatexpr")
+  if formatexpr == "" then
+    vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  else
+    vim.api.nvim_buf_set_option(0, "formatexpr", "")
+  end
+end
+
+vim.api.nvim_set_keymap(
+  "n",
+  "yof",
+  [[<cmd>lua ToggleFormatExpr()<CR>]],
   { noremap = true }
 )

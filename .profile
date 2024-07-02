@@ -37,6 +37,7 @@ export TERMINFO="$XDG_DATA_HOME/terminfo"
 export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VIFM="$XDG_CONFIG_HOME/vifm"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Add personal bin
 PATH="$XDG_BIN_HOME:$PATH"

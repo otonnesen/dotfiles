@@ -27,4 +27,10 @@ bspc config gapless_monocle      true
 bspc rule -a Zathura state=tiled
 
 bspc rule -a scratchpad sticky=on state=floating
-cat /dev/null > /tmp/scratchid # Clear old scratchid if not already done
+# cat /dev/null > /tmp/scratchid
+# Clear old scratchid if not already done
+bspc query --nodes \
+  | xargs -I'{}' bspc query -T -n {} \
+  | jq 'if .client.className == "scratchpad" then .id else empty end' \
+  | xargs -I'{}' bspc node {} -k \
+  && : > /tmp/scratchid

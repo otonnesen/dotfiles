@@ -78,7 +78,7 @@ set.completeopt = "menu,menuone,noselect"
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 
-set.mouse = nil
+set.mouse = ""
 
 vim.cmd([[
 function! Scratch()

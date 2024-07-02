@@ -64,7 +64,7 @@ alias \
 alias p='psql -U postgres -w -h localhost -p 5432 -d panidigital'
 
 # Pani alembic
-alias alembic='alembic -c database/database/migrations/alembic.ini -x pg_url="postgresql+psycopg://postgres:password@localhost:5432/panidigital"'
+# alias alembic='alembic -c database/database/migrations/alembic.ini -x pg_url="postgresql+psycopg://postgres:password@localhost:5432/panidigital"'
 
 alias wi='nvim -c "Neorg workspace pani"'
 
