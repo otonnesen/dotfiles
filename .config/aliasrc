@@ -72,6 +72,8 @@ alias nixs="nix-shell --command zsh"
 
 alias pydirenv='echo "export VIRTUAL_ENV=./venv\nlayout python-venv python3.11" > ./.envrc'
 
+alias ipy='ipython -i ${HOME}/panidigital/panidigital/prelude.ipy'
+
 copy_to_clipboard ()
 {
   xsel -ib < "$1"
