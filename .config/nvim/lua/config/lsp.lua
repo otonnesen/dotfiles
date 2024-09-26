@@ -128,6 +128,7 @@ lspconfig.htmx.setup({
 })
 lspconfig.terraformls.setup({
   on_attach = on_attach,
+  filetypes= { "hcl", "tf", "tfvars" },
 })
 lspconfig.dockerls.setup({
   on_attach = on_attach,
