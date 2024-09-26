@@ -5,8 +5,18 @@
 # 	completions=( $(tmux list-sessions 2>/dev/null | sed 's/:.*//g') )
 # 	_arguments '-p:tmux sessions:( $completions )' '-d:directory:_path_files -W ~/panidigital/panidigital -/'
 # }
+# _proj() {
+# 	local -a completions
+# 	completions=( $(tmux list-sessions 2>/dev/null | sed 's/:.*//g') )
+#     _arguments '1:directory:_path_files -W ~/panidigital/panidigital -/' '-p:tmux sessions:( $completions )'
+# }
 _proj() {
 	local -a completions
-	completions=( $(tmux list-sessions 2>/dev/null | sed 's/:.*//g') )
-    _arguments '1:directory:_path_files -W ~/panidigital/panidigital -/' '-p:tmux sessions:( $completions )'
+	tmux_sessions=( $(tmux list-sessions 2>/dev/null | sed 's/:.*//g') )
+    git_worktree_dirs=( $(
+        git --git-dir=/home/oliver/panidigital/panidigital/.git worktree list \
+        | awk '{print $1}' \
+        | sed 's~/home/oliver/panidigital/panidigital/~~g'
+    ) )
+    _arguments '1:worktrees:( $git_worktree_dirs )' '-p:tmux sessions:( $tmux_sessions )'
 }
