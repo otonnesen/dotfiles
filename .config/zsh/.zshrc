@@ -107,6 +107,9 @@ bindkey -M menuselect "j" vi-down-line-or-history
 bindkey -M menuselect "k" vi-up-line-or-history
 bindkey -M menuselect "l" vi-forward-char
 
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M vicmd '^R' history-incremental-pattern-search-backward
+
 export KEYTIMEOUT=1
 
 # What type is being completed
