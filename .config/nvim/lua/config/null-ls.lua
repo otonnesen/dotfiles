@@ -45,6 +45,6 @@ null_ls.setup({
   },
 })
 
-vim.keymap.set("n", "<F3>", function()
-  vim.lsp.buf.format({ async = true })
-end, { noremap = true, silent = true })
+-- vim.keymap.set("n", "<F3>", function()
+--   vim.lsp.buf.format({ async = true })
+-- end, { noremap = true, silent = true })

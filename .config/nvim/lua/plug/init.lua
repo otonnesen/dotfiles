@@ -66,12 +66,12 @@ require("packer").startup(function()
 
   use("nvim-treesitter/nvim-treesitter") -- Tree-sitter nvim interface
 
-  use("psf/black") -- Python formatting
+  -- use("psf/black") -- Python formatting
 
   use("rust-lang/rust.vim") -- Rust utils
 
   -- Python import sorting
-  use("stsewd/isort.nvim") --, { "do": ":UpdateRemoteuseins" }
+  -- use("stsewd/isort.nvim") --, { "do": ":UpdateRemoteuseins" }
 
   -- Misc. general utils
   use("tpope/vim-commentary")
@@ -115,7 +115,7 @@ require("packer").startup(function()
   use("mfussenegger/nvim-dap")
   use("mfussenegger/nvim-dap-python")
 
-  use({ "nvimtools/none-ls.nvim", requires = { "nvimtools/none-ls-extras.nvim" } })
+  -- use({ "nvimtools/none-ls.nvim", requires = { "nvimtools/none-ls-extras.nvim" } })
 
   use("nanotee/sqls.nvim")
 
@@ -169,4 +169,7 @@ require("packer").startup(function()
   })
 
   use("hedyhli/outline.nvim")
+
+  use("mhartington/formatter.nvim")
+  use("mfussenegger/nvim-lint")
 end)

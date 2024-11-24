@@ -10,7 +10,7 @@ require("config.lualine")
 require("config.neorg")
 -- require("config.vimwiki")
 require("config.vsnip")
-require("config.null-ls")
+-- require("config.null-ls")
 require("config.nvim-tree")
 require("config.orgmode")
 -- require("config.autoclose")
@@ -43,3 +43,6 @@ require("neotest").setup({
     }),
   },
 })
+
+require("config.formatter")
+require("config.nvim-lint")

@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
     url = "https://github.com/m4xshen/autoclose.nvim"
   },
-  black = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/black",
-    url = "https://github.com/psf/black"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -103,6 +98,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
+  },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -138,11 +138,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/haskell-vim",
     url = "https://github.com/neovimhaskell/haskell-vim"
-  },
-  ["isort.nvim"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/isort.nvim",
-    url = "https://github.com/stsewd/isort.nvim"
   },
   ["lua-utils.nvim"] = {
     loaded = true,
@@ -198,16 +193,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nim.nvim",
     url = "https://github.com/alaviss/nim.nvim"
-  },
-  ["none-ls-extras.nvim"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/none-ls-extras.nvim",
-    url = "https://github.com/nvimtools/none-ls-extras.nvim"
-  },
-  ["none-ls.nvim"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/none-ls.nvim",
-    url = "https://github.com/nvimtools/none-ls.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
