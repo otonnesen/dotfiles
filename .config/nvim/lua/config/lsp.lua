@@ -47,6 +47,7 @@ local root_files = {
 }
 
 lspconfig.pyright.setup({
+  on_attach = on_attach,
   root_dir = util.root_pattern(unpack(root_files)),
   settings = {
     python = {
@@ -98,7 +99,7 @@ lspconfig.gopls.setup({
       gofumpt = true,
       codelenses = {
         generate = true,
-        gc_details = true,
+        -- gc_details = true,
         tidy = true,
         upgrade_dependency = true,
         test = true,
@@ -128,7 +129,7 @@ lspconfig.htmx.setup({
 })
 lspconfig.terraformls.setup({
   on_attach = on_attach,
-  filetypes= { "hcl", "tf", "tfvars" },
+  filetypes = { "hcl", "tf", "tfvars" },
 })
 lspconfig.dockerls.setup({
   on_attach = on_attach,
@@ -168,8 +169,16 @@ lspconfig.ts_ls.setup({
     on_attach(client, bufnr)
   end,
 })
+
+vim.filetype.add({
+  pattern = {
+    ["tspconfig.ya?ml"] = "yaml.tspconfig",
+  },
+})
+
 lspconfig.tsp_server.setup({
   on_attach = on_attach,
+  filetypes = { "typespec", "yaml.tspconfig" },
 })
 lspconfig.graphql.setup({
   -- Kind of a huge hack but I cannot figure out how to get raw vim.lsp.start()
@@ -186,7 +195,7 @@ lspconfig.sqlls.setup({})
 -- })
 -- lspconfig.postgres_lsp.setup({})
 lspconfig.rnix.setup({})
-lspconfig.ruff_lsp.setup({
+lspconfig.ruff.setup({
   on_attach = on_attach,
   init_options = {
     settings = {
@@ -228,6 +237,9 @@ lspconfig.ocamllsp.setup({
 })
 lspconfig.taplo.setup({})
 -- lspconfig.nginx_language_server.setup({})
+lspconfig.perlnavigator.setup({
+  on_attach = on_attach,
+})
 
 vim.diagnostic.config({
   underline = true,
