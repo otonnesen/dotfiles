@@ -1,18 +1,21 @@
 vim.g.mapleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 require("plug")
 require("general")
 
 require("config.cmp")
+
 require("config.treesitter")
 require("config.telescope")
 require("config.lualine")
-require("config.neorg")
+-- require("config.neorg")
 -- require("config.vimwiki")
 require("config.vsnip")
 -- require("config.null-ls")
 require("config.nvim-tree")
-require("config.orgmode")
+-- require("config.orgmode")
 -- require("config.autoclose")
 require("config.dap")
 require("config.colorizer")
@@ -33,16 +36,25 @@ require("bindings")
 require("config.neovide")
 
 require("neotest").setup({
-  adapters = {
-    require("neotest-python")({
-      dap = { justMyCode = false },
-    }),
-    require("neotest-plenary"),
-    require("neotest-vim-test")({
-      ignore_file_types = { "python", "vim", "lua" },
-    }),
-  },
+	adapters = {
+		require("neotest-python")({
+			dap = { justMyCode = false },
+		}),
+		require("neotest-plenary"),
+		require("neotest-vim-test")({
+			ignore_file_types = { "python", "vim", "lua" },
+		}),
+	},
 })
 
 require("config.formatter")
 require("config.nvim-lint")
+
+require("CopilotChat").setup({
+	mappings = {
+		reset = {
+			normal = "<C-q>",
+			insert = "<C-q>",
+		},
+	},
+})

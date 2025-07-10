@@ -1,9 +1,15 @@
 -- Guideline
 vim.cmd("highlight ColorColumn ctermbg=16")
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<leader>y",
+--   [[<cmd>execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>]],
+--   { noremap = true }
+-- )
 vim.api.nvim_set_keymap(
   "n",
   "<leader>y",
-  [[<cmd>execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>]],
+  [[<cmd>CopilotChatToggle<CR>]],
   { noremap = true }
 )
 
@@ -65,11 +71,17 @@ vim.api.nvim_set_keymap("n", "<F2>", [[<cmd>NvimTreeFindFileToggle<CR>]], { nore
 function ToggleStuff()
   vim.cmd("execute 'set number! relativenumber! signcolumn=' . (&signcolumn == 'no' ? 'yes:1' : 'no')")
   vim.cmd("execute 'Gitsigns toggle_current_line_blame'")
-  if vim.diagnostic.is_disabled() then
+  if not vim.diagnostic.is_enabled() then
     vim.diagnostic.enable()
   else
-    vim.diagnostic.disable()
+    vim.diagnostic.enable(false)
   end
+
+  -- if not vim.lsp.inlay_hint.is_enabled() then
+  --   vim.lsp.inlay_hint.enable()
+  -- else
+  --   vim.lsp.inlay_hint.enable(false)
+  -- end
 end
 
 vim.api.nvim_set_keymap(

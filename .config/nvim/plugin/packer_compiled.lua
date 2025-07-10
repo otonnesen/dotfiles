@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
+local package_path_str = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?/init.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?.lua;/home/oliver/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/oliver/.cache/nvim/packer_hererocks/2.1.1741730670/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["CopilotChat.nvim"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/CopilotChat.nvim",
+    url = "https://github.com/CopilotC-Nvim/CopilotChat.nvim"
+  },
   ["FixCursorHold.nvim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
@@ -149,11 +154,6 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/lush.nvim",
-    url = "https://github.com/rktjmp/lush.nvim"
-  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -188,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neotest-vim-test",
     url = "https://github.com/nvim-neotest/neotest-vim-test"
+  },
+  ["neotest-vitest"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/neotest-vitest",
+    url = "https://github.com/marilari88/neotest-vitest"
   },
   ["nim.nvim"] = {
     loaded = true,
@@ -224,6 +229,11 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-dap-python",
     url = "https://github.com/mfussenegger/nvim-dap-python"
   },
+  ["nvim-lint"] = {
+    loaded = true,
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-lint",
+    url = "https://github.com/mfussenegger/nvim-lint"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -237,7 +247,7 @@ _G.packer_plugins = {
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -245,16 +255,9 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
-  orgmode = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\forgmode\frequire\0" },
     loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/orgmode",
-    url = "https://github.com/nvim-orgmode/orgmode"
+    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["outline.nvim"] = {
     loaded = true,
@@ -270,11 +273,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/pathlib.nvim",
     url = "https://github.com/pysan3/pathlib.nvim"
-  },
-  playground = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -359,10 +357,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: orgmode
-time([[Config for orgmode]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\forgmode\frequire\0", "config", "orgmode")
-time([[Config for orgmode]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

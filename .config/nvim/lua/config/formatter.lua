@@ -10,6 +10,14 @@ local js_prettier = function()
 	}
 end
 
+local clang_format = function()
+	return {
+		exe = "clang-format",
+		args = { "-i" },
+		stdin = false,
+	}
+end
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
 	logging = true,
@@ -45,6 +53,7 @@ require("formatter").setup({
 						"1",
 						"--comma-start",
 						"--wrap-comment",
+						"--no-space-function",
 					},
 					stdin = true,
 				}
@@ -63,15 +72,28 @@ require("formatter").setup({
 		javascriptreact = { js_prettier },
 		typescript = { js_prettier },
 		typescriptreact = { js_prettier },
+		toml = {
+			function()
+				return {
+					exe = "taplo",
+					args = { "format", "--option", "indent_string='    '" },
+				}
+			end,
+		},
+		typespec = {
+			function()
+				return {
+					exe = "tsp",
+					args = { "format" },
+					try_node_modules = true,
+				}
+			end,
+		},
 		go = {
 			function()
 				return {
-					exe = "golines",
-				}
-			end,
-			function()
-				return {
 					exe = "goimports",
+					args = { "-w" },
 				}
 			end,
 			function()
@@ -79,8 +101,49 @@ require("formatter").setup({
 					exe = "goimports-reviser",
 				}
 			end,
+			function()
+				return {
+					exe = "golines",
+					args = { "--chain-split-dots", "-w" },
+				}
+			end,
+		},
+		rust = {
+			function()
+				return {
+					exe = "rustfmt",
+					args = { "--emit=stdout" },
+					stdin = true,
+				}
+			end,
 		},
 		html = {},
+		c = { clang_format },
+		cpp = { clang_format },
+		nginx = {
+			function()
+				return {
+					exe = "nginxfmt",
+				}
+			end,
+		},
+		dockerfile = {
+			function()
+				print("dockerfile")
+				return {
+					exe = "dockerfmt",
+					args = { "-w" },
+				}
+			end,
+		},
+		terraform = {
+			function()
+				return {
+					exe = "terraform",
+					args = { "fmt" },
+				}
+			end,
+		},
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,
 		},

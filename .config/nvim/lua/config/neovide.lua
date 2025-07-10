@@ -1,6 +1,4 @@
-vim.cmd([[
-  if exists("g:neovide")
-    let g:neovide_scale_factor=0.5
-    let g:neovide_cursor_animation_length=0.03
-  endif
-]])
+if vim.g.neovide then
+	vim.g.neovide_scale_factor = 0.9
+	vim.g.neovide_cursor_animation_length = 0.03
+end
