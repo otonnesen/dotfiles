@@ -1,12 +1,13 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("plug")
+require("config.lazy")
+
 require("general")
 
 require("config.cmp")
-
 require("config.treesitter")
 require("config.telescope")
 require("config.lualine")
