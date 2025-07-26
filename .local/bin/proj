@@ -22,12 +22,22 @@ if [ -z "${dir}" ]; then
 	exit 1
 fi
 
+if [ ! -d "${dir}" ]; then
+  echo "Directory does not exist: ${dir}"
+  exit 1
+  # echo "Directory does not exist, creating..."
+  # mkdir -p "${dir}"
+  # # git --git-dir="${HOME}/panidigital/panidigital/.git" branch "${1}" stage
+  # git --git-dir="${HOME}/panidigital/panidigital/.git" worktree add -b "${1}" "${dir}" stage
+fi
+
 if [ -z "${session}" ]; then
 	session="$(basename "${dir}")"
     echo "No session name specified, defaulting to ${session}"
 fi
 
 [ -f "${dir}/backend/.envrc" ] || ln -s "${HOME}/panidigital/panidigital/backend.envrc" "${dir}/backend/.envrc"
+# [ -f "${dir}/llm-service/.envrc" ] || ln -s "${HOME}/panidigital/panidigital/llm-service.envrc" "${dir}/llm-service/.envrc"
 # [ -f "${dir}/frontend/.envrc" ] || ln -s "${HOME}/panidigital/panidigital/frontend.envrc" "${dir}/frontend/.envrc"
 
 if [ "$(tmux list-sessions | awk '{print $1}' | sed -e 's/:$//g' | grep "^${session}$")" == "${session}" ]; then
@@ -48,8 +58,16 @@ tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
 
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" run
-tmux send-keys -t "${session}" 'cd ' "${dir}" ' && clear' C-m
-tmux send-keys -t "${session}" 'dc -f compose.dev.yml up'
+# tmux send-keys -t "${session}" 'cd ' "${dir}" ' && clear' C-m
+# tmux send-keys -t "${session}" 'dc -f compose.dev.yml up'
+tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
+tmux send-keys -t "${session}" 'dcu'
+# tmux split-window -v -t "${session}"
+# tmux send-keys -t "${session}" 'cd ' "${dir}/llm-service" ' && clear' C-m
+# tmux send-keys -t "${session}" './run.sh'
+tmux split-window -v -t "${session}"
+tmux send-keys -t "${session}" 'cd ' "${dir}/typescript" ' && clear' C-m
+tmux send-keys -t "${session}" 'pnpm start'
 
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" db
@@ -67,6 +85,14 @@ tmux send-keys -t "${session}" 'cd ' "${dir}/backend" ' && clear' C-m
 tmux new-window -t "${session}"
 tmux rename-window -t "${session}" typescript
 tmux send-keys -t "${session}" 'cd ' "${dir}/typescript" ' && clear' C-m
+
+tmux new-window -t "${session}"
+tmux rename-window -t "${session}" typespec
+tmux send-keys -t "${session}" 'cd ' "${dir}/typespec" ' && clear' C-m
+
+# tmux new-window -t "${session}"
+# tmux rename-window -t "${session}" llm-svc
+# tmux send-keys -t "${session}" 'cd ' "${dir}/llm-service" ' && clear' C-m
 
 tmux select-window -t "${session}:0"
 
