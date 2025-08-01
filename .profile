@@ -83,4 +83,4 @@ export FLYCTL_INSTALL="/home/oliver/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 export PATH="$HOME/.local/src/protoc/bin:$PATH"
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"

@@ -87,8 +87,8 @@ fpath+="$ZDOTDIR/functions"
 source $ZDOTDIR/plugins/nix-zsh-completions/nix-zsh-completions.plugin.zsh
 fpath=($ZDOTDIR/plugins/nix-zsh-completions $fpath)
 
-. "${HOME}/.asdf/asdf.sh"
-fpath=(${ASDF_DIR}/completions $fpath)
+# . "${HOME}/.asdf/asdf.sh"
+# fpath=(${ASDF_DIR}/completions $fpath)
 
 compinit
 
@@ -131,7 +131,7 @@ zstyle ":completion:*" special-dirs false
 zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#)*=0=01;31"
 zstyle ":completion:*:kill:*" command "ps -u $USER -o pid,%cpu,tty,cputime,cmd"
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -165,11 +165,11 @@ eval "`fnm env`"
 # awscli completions
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+# source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # opam configuration
 test -r /home/oliver/.opam/opam-init/init.zsh && . /home/oliver/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # pnpm
 export PNPM_HOME="/home/oliver/.local/share/pnpm"
